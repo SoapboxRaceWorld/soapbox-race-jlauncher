@@ -2,6 +2,8 @@ package br.com.soapboxrace.jlauncher.util;
 
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.security.MessageDigest;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -19,6 +21,11 @@ public class Md5Files {
 	private static HashMap<String, byte[]> filesToCheck = new HashMap<>();
 
 	public static boolean checkExeFile(String filename) {
+		Path p = Paths.get(filename);
+		Path fileNameExe = p.getFileName();
+		if (!"nfsw.exe".equals(fileNameExe.toString())) {
+			return false;
+		}
 		try {
 			byte[] createChecksum = createChecksum(filename);
 			return Arrays.equals(md5ExeFile, createChecksum);
