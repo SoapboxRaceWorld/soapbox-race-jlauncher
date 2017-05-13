@@ -46,6 +46,7 @@ public class HttpRequest {
 			URL serverAuth = new URL(url);
 			HttpURLConnection serverCon = (HttpURLConnection) serverAuth.openConnection();
 			serverCon.setRequestMethod("GET");
+			serverCon.setRequestProperty("Accept-Encoding", "gzip");
 			InputStream inputStream = null;
 			int responseCode = serverCon.getResponseCode();
 			if (responseCode == 200) {
