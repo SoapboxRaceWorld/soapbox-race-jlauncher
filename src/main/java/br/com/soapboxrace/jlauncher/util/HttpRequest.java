@@ -61,6 +61,7 @@ public class HttpRequest {
 			StringBuffer response = new StringBuffer();
 			while ((inputLine = bufferedReader.readLine()) != null) {
 				response.append(inputLine);
+				response.append("\n");
 			}
 			requestVO = new RequestVO(responseCode, response.toString());
 			bufferedReader.close();

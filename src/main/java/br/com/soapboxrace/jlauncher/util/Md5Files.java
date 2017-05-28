@@ -28,7 +28,11 @@ public class Md5Files {
 		}
 		try {
 			byte[] createChecksum = createChecksum(filename);
-			return Arrays.equals(md5ExeFile, createChecksum);
+			if (Arrays.equals(md5ExeFile, createChecksum)) {
+				return true;
+			}
+			System.out.println(filename + " " + byteArrayToHexString(createChecksum));
+			return false;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -103,5 +107,16 @@ public class Md5Files {
 			}
 		}
 		return true;
+	}
+
+	public static String byteArrayToHexString(byte[] b) {
+		int len = b.length;
+		String data = new String();
+		for (int i = 0; i < len; i++) {
+			data += Integer.toHexString((b[i] >> 4) & 0xf);
+			data += Integer.toHexString(b[i] & 0xf);
+			// data += ":";
+		}
+		return data;
 	}
 }

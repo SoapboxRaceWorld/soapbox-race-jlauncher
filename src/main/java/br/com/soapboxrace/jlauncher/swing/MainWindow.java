@@ -12,6 +12,7 @@ import javax.swing.JFileChooser;
 
 import br.com.soapboxrace.jlauncher.LoginCreate;
 import br.com.soapboxrace.jlauncher.Main;
+import br.com.soapboxrace.jlauncher.util.ServerList;
 import br.com.soapboxrace.jlauncher.vo.ConfigVO;
 import br.com.soapboxrace.jlauncher.vo.LoginOkVO;
 
@@ -28,13 +29,15 @@ public class MainWindow extends javax.swing.JFrame {
 
 	private LoginOkVO loginOkVO;
 	private ConfigVO configVO = Main.loadConfig();
+	private ServerList serverList = new ServerList();
 
 	/**
 	 * Creates new form MainWindow
 	 */
 	public MainWindow() {
 		initComponents();
-		serverAddrText.setText(configVO.getServerURL());
+		serverAddrCombo.removeAllItems();
+		serverAddrCombo.addItem(configVO.getServerURL());
 		loginEmailText.setText(configVO.getEmail());
 		if (!configVO.getGameExePath().isEmpty()) {
 			pathLabel.setText(configVO.getGameExePath());
@@ -75,12 +78,13 @@ public class MainWindow extends javax.swing.JFrame {
 		createEmailText = new javax.swing.JTextField();
 		createButton = new javax.swing.JButton();
 		jLabel1 = new javax.swing.JLabel();
-		serverAddrText = new javax.swing.JTextField();
 		pathLabel = new javax.swing.JLabel();
 		changeGamePathButton = new javax.swing.JButton();
 		launchButton = new javax.swing.JButton();
 		jPanel4 = new javax.swing.JPanel();
 		messageLabel = new javax.swing.JLabel();
+		serverAddrCombo = new javax.swing.JComboBox<>();
+		srvListButton = new javax.swing.JButton();
 
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -113,9 +117,9 @@ public class MainWindow extends javax.swing.JFrame {
 				.addContainerGap().addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING).addComponent(jLabel4).addComponent(jLabel2))
 				.addGap(18, 18, 18)
 				.addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-						.addGroup(jPanel2Layout.createSequentialGroup().addComponent(loginSaveCredentialsCheckBox).addGap(0, 374, Short.MAX_VALUE))
 						.addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup().addGap(0, 0, Short.MAX_VALUE).addComponent(loginButton))
-						.addComponent(loginEmailText, javax.swing.GroupLayout.Alignment.TRAILING).addComponent(loginPasswordText, javax.swing.GroupLayout.Alignment.TRAILING))
+						.addComponent(loginEmailText, javax.swing.GroupLayout.Alignment.TRAILING).addComponent(loginPasswordText, javax.swing.GroupLayout.Alignment.TRAILING)
+						.addGroup(jPanel2Layout.createSequentialGroup().addComponent(loginSaveCredentialsCheckBox).addGap(0, 429, Short.MAX_VALUE)))
 				.addContainerGap()));
 		jPanel2Layout.setVerticalGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 				.addGroup(jPanel2Layout.createSequentialGroup().addContainerGap()
@@ -125,7 +129,7 @@ public class MainWindow extends javax.swing.JFrame {
 						.addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE).addComponent(jLabel4).addComponent(loginPasswordText,
 								javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
 						.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED).addComponent(loginSaveCredentialsCheckBox)
-						.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 139, Short.MAX_VALUE).addComponent(loginButton).addContainerGap()));
+						.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE).addComponent(loginButton).addContainerGap()));
 
 		mainTabbedPane.addTab("Launcher", jPanel2);
 
@@ -157,7 +161,7 @@ public class MainWindow extends javax.swing.JFrame {
 								.addGroup(jPanel3Layout.createSequentialGroup().addContainerGap().addComponent(jLabel8)))
 								.addGap(18, 18, 18)
 								.addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(createTicketText).addComponent(createEmailText)
-										.addComponent(createPasswd1Text).addComponent(createPasswd2Text, javax.swing.GroupLayout.DEFAULT_SIZE, 455, Short.MAX_VALUE)))
+										.addComponent(createPasswd1Text).addComponent(createPasswd2Text, javax.swing.GroupLayout.DEFAULT_SIZE, 510, Short.MAX_VALUE)))
 						.addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup().addGap(0, 0, Short.MAX_VALUE).addComponent(createButton)))
 				.addContainerGap()));
 		jPanel3Layout.setVerticalGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -203,7 +207,7 @@ public class MainWindow extends javax.swing.JFrame {
 		jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
 		messageLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-		messageLabel.setText("<html><b>SoapBox Race World Online Launcher beta v0.0.4</b></html>");
+		messageLabel.setText("<html><b>SoapBox Race World Online Launcher beta v0.0.5</b></html>");
 
 		javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
 		jPanel4.setLayout(jPanel4Layout);
@@ -216,25 +220,42 @@ public class MainWindow extends javax.swing.JFrame {
 
 		messageLabel.getAccessibleContext().setAccessibleName("messageLabel");
 
+		serverAddrCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "click get server List" }));
+		serverAddrCombo.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				serverAddrComboActionPerformed(evt);
+			}
+		});
+
+		srvListButton.setText("Get Server List");
+		srvListButton.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				srvListButtonActionPerformed(evt);
+			}
+		});
+
 		javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
 		jPanel1.setLayout(jPanel1Layout);
-		jPanel1Layout.setHorizontalGroup(
-				jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(mainTabbedPane, javax.swing.GroupLayout.Alignment.TRAILING)
-						.addGroup(jPanel1Layout.createSequentialGroup().addContainerGap()
-								.addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-										.addGroup(jPanel1Layout.createSequentialGroup().addComponent(jLabel1).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-												.addComponent(serverAddrText))
-										.addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
-												jPanel1Layout.createSequentialGroup()
-														.addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-														.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(launchButton))
-										.addGroup(jPanel1Layout.createSequentialGroup().addComponent(changeGamePathButton).addGap(18, 18, 18).addComponent(pathLabel).addGap(0, 0,
-												Short.MAX_VALUE)))
-								.addContainerGap()));
+		jPanel1Layout.setHorizontalGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addComponent(mainTabbedPane, javax.swing.GroupLayout.Alignment.TRAILING)
+				.addGroup(jPanel1Layout.createSequentialGroup().addContainerGap().addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(
+						javax.swing.GroupLayout.Alignment.TRAILING,
+						jPanel1Layout.createSequentialGroup().addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(launchButton))
+						.addGroup(
+								jPanel1Layout.createSequentialGroup()
+										.addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+												.addGroup(jPanel1Layout.createSequentialGroup().addComponent(changeGamePathButton).addGap(18, 18, 18).addComponent(pathLabel))
+												.addGroup(jPanel1Layout.createSequentialGroup().addComponent(jLabel1).addGap(18, 18, 18).addComponent(serverAddrCombo, 0,
+														javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+										.addGap(18, 18, 18).addComponent(srvListButton)))
+						.addContainerGap()));
 		jPanel1Layout.setVerticalGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
 				jPanel1Layout.createSequentialGroup().addContainerGap()
-						.addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE).addComponent(jLabel1).addComponent(serverAddrText,
-								javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+						.addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+								.addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE).addComponent(jLabel1).addComponent(serverAddrCombo,
+										javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+								.addComponent(srvListButton))
 						.addGap(18, 18, 18)
 						.addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE).addComponent(changeGamePathButton).addComponent(pathLabel))
 						.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(mainTabbedPane).addGap(18, 18, 18)
@@ -253,6 +274,23 @@ public class MainWindow extends javax.swing.JFrame {
 		pack();
 	}// </editor-fold>//GEN-END:initComponents
 
+	private void serverAddrComboActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_serverAddrComboActionPerformed
+		// TODO add your handling code here:
+		serverAddrCombo.getItemAt(0);
+	}// GEN-LAST:event_serverAddrComboActionPerformed
+
+	private void srvListButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_srvListButtonActionPerformed
+		serverAddrCombo.removeAllItems();
+		try {
+			String[] serverListStr = serverList.getServerList();
+			for (String string : serverListStr) {
+				serverAddrCombo.addItem(string);
+			}
+		} catch (Exception e) {
+			setErrorMessage("Error loading server list");
+		}
+	}// GEN-LAST:event_srvListButtonActionPerformed
+
 	private void changeGamePathButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_changeGamePathButtonActionPerformed
 		int returnVal = fileChooser.showOpenDialog(this);
 		if (returnVal == JFileChooser.APPROVE_OPTION) {
@@ -267,7 +305,7 @@ public class MainWindow extends javax.swing.JFrame {
 	private void launchButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_launchButtonActionPerformed
 		String token = loginOkVO.getLoginToken();
 		String userId = loginOkVO.getUserId();
-		String srvStr = serverAddrText.getText() + "/soapbox-race-core/Engine.svc";
+		String srvStr = getUrl() + "/soapbox-race-core/Engine.svc";
 		String gamePath = pathLabel.getText();
 		ProcessBuilder processBuilder = new ProcessBuilder(gamePath, "US", srvStr, token, userId);
 		try {
@@ -279,7 +317,13 @@ public class MainWindow extends javax.swing.JFrame {
 	}// GEN-LAST:event_launchButtonActionPerformed
 
 	private void createButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_createButtonActionPerformed
-		String url = serverAddrText.getText();
+		if (!Main.copyModules(pathLabel.getText())) {
+			setErrorMessage("Can't copy module files to game folder, please check folder permissions, or run as admin");
+			launchButton.setEnabled(false);
+			return;
+		}
+
+		String url = getUrl();
 		String email = createEmailText.getText();
 		String password1 = new String(createPasswd1Text.getPassword());
 		String password2 = new String(createPasswd2Text.getPassword());
@@ -302,7 +346,7 @@ public class MainWindow extends javax.swing.JFrame {
 			launchButton.setEnabled(false);
 			return;
 		}
-		String url = serverAddrText.getText();
+		String url = getUrl();
 		String email = loginEmailText.getText();
 		String password = new String(loginPasswordText.getPassword());
 		LoginCreate login = Main.login(url, email, password, loginSaveCredentialsCheckBox.isSelected());
@@ -382,7 +426,8 @@ public class MainWindow extends javax.swing.JFrame {
 	private javax.swing.JTabbedPane mainTabbedPane;
 	private javax.swing.JLabel messageLabel;
 	private javax.swing.JLabel pathLabel;
-	private javax.swing.JTextField serverAddrText;
+	private javax.swing.JComboBox<String> serverAddrCombo;
+	private javax.swing.JButton srvListButton;
 	// End of variables declaration//GEN-END:variables
 
 	public void setErrorMessage(String message) {
@@ -413,10 +458,17 @@ public class MainWindow extends javax.swing.JFrame {
 	private void checkGameFile(String path) {
 		if (Main.checkGameMd5(path)) {
 			enableAll();
-			setMessage("SoapBox Race World Online Launcher beta v0.0.4");
+			setMessage("SoapBox Race World Online Launcher beta v0.0.5");
 		} else {
 			disableAll();
 			setErrorMessage("Invalid or modded game file!");
 		}
+	}
+
+	private String getUrl() {
+		String selectedItem = (String) serverAddrCombo.getSelectedItem();
+		String[] split = selectedItem.split(";");
+		System.out.println(split[1]);
+		return split[1];
 	}
 }

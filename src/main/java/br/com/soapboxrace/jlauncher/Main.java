@@ -24,7 +24,7 @@ public class Main {
 
 	public static LoginCreate login(String url, String email, String password, boolean saveCredentials) {
 		ConfigVO configVO = loadConfig();
-		configVO.setServerURL(url);
+		configVO.setServerURL("Latest server;" + url);
 		configDao.saveConfig(configVO);
 		UserVO userVO = new UserVO(email, password);
 		if ("********************".equals(password)) {
@@ -69,7 +69,7 @@ public class Main {
 
 	public static LoginCreate create(String url, String email, String password) {
 		ConfigVO configVO = loadConfig();
-		configVO.setServerURL(url);
+		configVO.setServerURL("Latest server;" + url);
 		configDao.saveConfig(configVO);
 		UserVO userVO = new UserVO(email, password);
 		LoginCreate login = new LoginCreate(url, userVO);
