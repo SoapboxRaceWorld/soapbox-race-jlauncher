@@ -310,10 +310,11 @@ public class MainWindow extends javax.swing.JFrame {
 		ProcessBuilder processBuilder = new ProcessBuilder(gamePath, "US", srvStr, token, userId);
 		try {
 			processBuilder.start();
+			System.exit(0);
 		} catch (IOException e) {
+			setErrorMessage(e.getMessage());
 			e.printStackTrace();
 		}
-		System.exit(0);
 	}// GEN-LAST:event_launchButtonActionPerformed
 
 	private void createButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_createButtonActionPerformed
