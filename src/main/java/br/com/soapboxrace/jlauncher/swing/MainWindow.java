@@ -323,22 +323,25 @@ public class MainWindow extends javax.swing.JFrame {
 			launchButton.setEnabled(false);
 			return;
 		}
-
-		String url = getUrl();
-		String email = createEmailText.getText();
-		String password1 = new String(createPasswd1Text.getPassword());
-		String password2 = new String(createPasswd2Text.getPassword());
-		String ticket = createTicketText.getText();
-		LoginCreate create = Main.create(url, email, password1);
-		boolean doCreate = create.doCreate(password2, ticket);
-		if (!doCreate) {
-			launchButton.setEnabled(false);
-			setErrorMessage(create.getMessage());
-		} else {
-			launchButton.setEnabled(true);
-			setMessage(create.getMessage() + " Launch Game!");
+		try {
+			String url = getUrl();
+			String email = createEmailText.getText();
+			String password1 = new String(createPasswd1Text.getPassword());
+			String password2 = new String(createPasswd2Text.getPassword());
+			String ticket = createTicketText.getText();
+			LoginCreate create = Main.create(url, email, password1);
+			boolean doCreate = create.doCreate(password2, ticket);
+			if (!doCreate) {
+				launchButton.setEnabled(false);
+				setErrorMessage(create.getMessage());
+			} else {
+				launchButton.setEnabled(true);
+				setMessage(create.getMessage() + " Launch Game!");
+			}
+			loginOkVO = create.getLoginOkVO();
+		} catch (Exception e) {
+			setErrorMessage(e.getMessage());
 		}
-		loginOkVO = create.getLoginOkVO();
 	}// GEN-LAST:event_createButtonActionPerformed
 
 	private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_loginButtonActionPerformed
