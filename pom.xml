@@ -32,7 +32,14 @@
       </plugin>
     </plugins>
   </build>
-  <dependencies>
+    <repositories>
+        <repository>
+            <id>unknown-jars-temp-repo</id>
+            <name>A temporary repository created by NetBeans for libraries and jars it could not identify. Please replace the dependencies in this repository with correct ones and delete this repository.</name>
+            <url>file:${project.basedir}/lib</url>
+        </repository>
+    </repositories>
+    <dependencies>
     <dependency>
       <groupId>commons-codec</groupId>
       <artifactId>commons-codec</artifactId>
@@ -44,6 +51,20 @@
       <version>4.12</version>
       <scope>test</scope>
     </dependency>
-
-  </dependencies>
+    <dependency>
+      <groupId>org.netbeans.lib</groupId>
+      <artifactId>cvsclient</artifactId>
+      <version>20060125</version>
+    </dependency>
+        <dependency>
+            <groupId>unknown.binary</groupId>
+            <artifactId>AbsoluteLayout</artifactId>
+            <version>SNAPSHOT</version>
+        </dependency>
+<dependency>
+    <groupId>xswingx</groupId>
+    <artifactId>prompt</artifactId>
+    <version>1.0</version>
+</dependency>
+    </dependencies>
 </project>
