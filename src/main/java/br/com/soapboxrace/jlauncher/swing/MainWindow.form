@@ -136,7 +136,7 @@
                               <Component id="loginPasswordText" alignment="1" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <Component id="loginSaveCredentialsCheckBox" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="429" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="446" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -169,7 +169,9 @@
                 <Component class="javax.swing.JLabel" name="jLabel2">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="4"/>
-                    <Property name="text" type="java.lang.String" value="e-mail:"/>
+                    <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                      <Connection code="Text.getString(Email)" type="code"/>
+                    </Property>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel4">
