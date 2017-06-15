@@ -32,7 +32,7 @@ public class MainWindow extends javax.swing.JFrame {
 	private LoginOkVO loginOkVO;
 	private ConfigVO configVO = Main.loadConfig();
 	private ServerList serverList = new ServerList();
-        ResourceBundle Text = ResourceBundle.getBundle("locales", Locale.getDefault());
+        ResourceBundle Text = ResourceBundle.getBundle("locales.locale", Locale.getDefault());
 
 	/**
 	 * Creates new form MainWindow
@@ -94,7 +94,7 @@ public class MainWindow extends javax.swing.JFrame {
         mainTabbedPane.setEnabled(false);
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel2.setText(Text.getString(Email));
+        jLabel2.setText(Text.getString("Email"));
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("password:");
