@@ -7,6 +7,8 @@ package br.com.soapboxrace.jlauncher.swing;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import javax.swing.JFileChooser;
 
