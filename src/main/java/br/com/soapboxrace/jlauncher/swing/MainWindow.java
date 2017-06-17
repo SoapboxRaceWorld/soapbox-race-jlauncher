@@ -90,6 +90,7 @@ public class MainWindow extends javax.swing.JFrame {
         srvListButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("SoapBox World Racing Launcher");
 
         mainTabbedPane.setEnabled(false);
 
@@ -97,13 +98,13 @@ public class MainWindow extends javax.swing.JFrame {
         jLabel2.setText(Text.getString("Email"));
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel4.setText("password:");
+        jLabel4.setText(Text.getString("Password"));
 
         loginEmailText.setEnabled(false);
 
         loginPasswordText.setEnabled(false);
 
-        loginButton.setText("Login");
+        loginButton.setText(Text.getString("Login"));
         loginButton.setEnabled(false);
         loginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -112,7 +113,7 @@ public class MainWindow extends javax.swing.JFrame {
         });
 
         loginSaveCredentialsCheckBox.setEnabled(false);
-        loginSaveCredentialsCheckBox.setLabel("save credentials");
+        loginSaveCredentialsCheckBox.setLabel(Text.getString("SaveCredentials"));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -132,7 +133,7 @@ public class MainWindow extends javax.swing.JFrame {
                     .addComponent(loginPasswordText, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(loginSaveCredentialsCheckBox)
-                        .addGap(0, 446, Short.MAX_VALUE)))
+                        .addGap(0, 528, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -148,22 +149,22 @@ public class MainWindow extends javax.swing.JFrame {
                     .addComponent(loginPasswordText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(loginSaveCredentialsCheckBox)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 139, Short.MAX_VALUE)
                 .addComponent(loginButton)
                 .addContainerGap())
         );
 
         mainTabbedPane.addTab("Launcher", jPanel2);
 
-        jLabel6.setText("invite Ticket:");
+        jLabel6.setText(Text.getString("InviteTicket"));
 
-        jLabel7.setText("password:");
+        jLabel7.setText(Text.getString("Password"));
 
-        jLabel8.setText("confirm password:");
+        jLabel8.setText(Text.getString("ConfirmPassword"));
 
-        jLabel9.setText("e-mail:");
+        jLabel9.setText(Text.getString("Email"));
 
-        createButton.setText("Create Account");
+        createButton.setText(Text.getString("CreateAccount"));
         createButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 createButtonActionPerformed(evt);
@@ -177,22 +178,18 @@ public class MainWindow extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(54, 54, 54)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel8)))
+                        .addGap(54, 54, 54)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(createTicketText)
                             .addComponent(createEmailText)
                             .addComponent(createPasswd1Text)
-                            .addComponent(createPasswd2Text, javax.swing.GroupLayout.DEFAULT_SIZE, 510, Short.MAX_VALUE)))
+                            .addComponent(createPasswd2Text, javax.swing.GroupLayout.DEFAULT_SIZE, 505, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(createButton)))
@@ -224,11 +221,11 @@ public class MainWindow extends javax.swing.JFrame {
 
         mainTabbedPane.addTab("Create Account", jPanel3);
 
-        jLabel1.setText("Server address:");
+        jLabel1.setText(Text.getString("ServerAddress"));
 
-        pathLabel.setText("...");
+        pathLabel.setText(Text.getString("ChooseGamePath"));
 
-        changeGamePathButton.setText("Change game exe path");
+        changeGamePathButton.setText(Text.getString("ChangeGamePath"));
         changeGamePathButton.setToolTipText("");
         changeGamePathButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -236,7 +233,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
-        launchButton.setText("Launch Game");
+        launchButton.setText(Text.getString("LaunchGame"));
         launchButton.setEnabled(false);
         launchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -268,14 +265,14 @@ public class MainWindow extends javax.swing.JFrame {
 
         messageLabel.getAccessibleContext().setAccessibleName("messageLabel");
 
-        serverAddrCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "click get server List" }));
+        serverAddrCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { Text.getString("SelectServer") }));
         serverAddrCombo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 serverAddrComboActionPerformed(evt);
             }
         });
 
-        srvListButton.setText("Get Server List");
+        srvListButton.setText(Text.getString("GetServerList"));
         srvListButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 srvListButtonActionPerformed(evt);
