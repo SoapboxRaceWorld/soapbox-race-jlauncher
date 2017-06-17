@@ -149,7 +149,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        mainTabbedPane.addTab("Launcher", jPanel2);
+        mainTabbedPane.addTab(Text.getString("Login"), jPanel2);
 
         createButton.setText(Text.getString("CreateAccount"));
         createButton.addActionListener(new java.awt.event.ActionListener() {
@@ -192,7 +192,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        mainTabbedPane.addTab("Create Account", jPanel3);
+        mainTabbedPane.addTab(Text.getString("Register"), jPanel3);
 
         jLabel1.setText(Text.getString("ServerAddress"));
 
