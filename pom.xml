@@ -62,6 +62,7 @@
       <groupId>xswingx</groupId>
       <artifactId>prompt</artifactId>
       <version>1.0</version>
+      <type>jar</type>
     </dependency>
   </dependencies>
   <name>SBRW Launcher</name>
