@@ -44,6 +44,11 @@
       <version>4.12</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>xswingx</groupId>
+      <artifactId>prompt</artifactId>
+      <version>1.0</version>
+    </dependency>
 
   </dependencies>
     <name>SBRW Launcher</name>
