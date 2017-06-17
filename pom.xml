@@ -48,8 +48,9 @@
       <groupId>xswingx</groupId>
       <artifactId>prompt</artifactId>
       <version>1.0</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/prompt.jar</systemPath>
     </dependency>
-
   </dependencies>
-    <name>SBRW Launcher</name>
+  <name>SBRW Launcher</name>
 </project>

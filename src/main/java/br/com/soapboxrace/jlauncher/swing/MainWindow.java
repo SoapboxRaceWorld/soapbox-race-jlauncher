@@ -33,7 +33,7 @@ public class MainWindow extends javax.swing.JFrame {
 	private LoginOkVO loginOkVO;
 	private ConfigVO configVO = Main.loadConfig();
 	private ServerList serverList = new ServerList();
-        ResourceBundle Text = ResourceBundle.getBundle("locales.locale", Locale.getDefault());
+    private ResourceBundle Text = ResourceBundle.getBundle("locales.locale", Locale.getDefault());
 
 	/**
 	 * Creates new form MainWindow
