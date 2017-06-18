@@ -329,7 +329,7 @@
             <Component class="javax.swing.JLabel" name="messageLabel">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;b&gt;SoapBox Race World Online Launcher Beta v0.0.5&lt;/b&gt;&lt;/html&gt;"/>
+                <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;b&gt;SoapBox Race World Online Launcher Beta v0.0.6&lt;/b&gt;&lt;/html&gt;"/>
               </Properties>
               <AccessibilityProperties>
                 <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="messageLabel"/>

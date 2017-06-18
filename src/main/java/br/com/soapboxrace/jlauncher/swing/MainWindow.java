@@ -214,7 +214,7 @@ public class MainWindow extends javax.swing.JFrame {
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         messageLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        messageLabel.setText("<html><b>SoapBox Race World Online Launcher Beta v0.0.5</b></html>");
+        messageLabel.setText("<html><b>SoapBox Race World Online Launcher Beta v0.0.6</b></html>");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
