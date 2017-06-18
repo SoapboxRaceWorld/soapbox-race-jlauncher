@@ -6,7 +6,7 @@
     <Property name="title" type="java.lang.String" value="Server Info"/>
   </Properties>
   <SyntheticProperties>
-    <SyntheticProperty name="formSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,1,83,0,0,1,-96"/>
+    <SyntheticProperty name="formSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,1,71,0,0,1,-96"/>
     <SyntheticProperty name="formSizePolicy" type="int" value="0"/>
     <SyntheticProperty name="generateSize" type="boolean" value="true"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
@@ -41,15 +41,150 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="400" max="32767" attributes="0"/>
+              <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="serverNameLabel" alignment="0" max="32767" attributes="0"/>
+                      <Component id="serverName" max="32767" attributes="0"/>
+                      <Component id="serverDescriptionLabel" alignment="0" max="32767" attributes="0"/>
+                      <Component id="serverDescription" alignment="0" max="32767" attributes="0"/>
+                      <Component id="usersOnlineLabel" alignment="0" max="32767" attributes="0"/>
+                      <Component id="usersOnline" alignment="0" max="32767" attributes="0"/>
+                      <Component id="usersRegisteredLabel" alignment="0" max="32767" attributes="0"/>
+                      <Component id="usersRegistered" alignment="0" max="32767" attributes="0"/>
+                      <Component id="ownersList" alignment="0" max="32767" attributes="0"/>
+                      <Component id="serverLocation" alignment="0" max="32767" attributes="0"/>
+                      <Component id="ownerListLabel" alignment="0" max="32767" attributes="0"/>
+                      <Component id="adminListLabel" alignment="0" max="32767" attributes="0"/>
+                      <Component id="serverLocationLabel" alignment="0" pref="380" max="32767" attributes="0"/>
+                      <Component id="adminList" alignment="0" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="300" max="32767" attributes="0"/>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="serverNameLabel" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="serverName" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="serverDescriptionLabel" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="serverDescription" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="usersOnlineLabel" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="usersOnline" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="usersRegisteredLabel" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="usersRegistered" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="ownerListLabel" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="ownersList" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="adminListLabel" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="adminList" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="serverLocationLabel" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="serverLocation" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
           </Group>
         </DimensionLayout>
       </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="serverNameLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="Text.getString(&quot;serverNameLabel&quot;)" type="code"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="serverName">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="W.I.P"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="serverDescriptionLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="Text.getString(&quot;ServerDescription&quot;)" type="code"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="serverDescription">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="W.I.P"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="usersOnlineLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="Text.getString(&quot;usersOnlineLabel&quot;)" type="code"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="usersOnline">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="W.I.P"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="usersRegisteredLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="Text.getString(&quot;usersRegistered&quot;)" type="code"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="usersRegistered">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="W.I.P"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="ownerListLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="Text.getString(&quot;ownerName&quot;)" type="code"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="ownersList">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="W.I.P"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="adminListLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="Text.getString(&quot;adminList&quot;)" type="code"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="adminList">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="W.I.P"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="serverLocationLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="Text.getString(&quot;originCountry&quot;)" type="code"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="serverLocation">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="W.I.P"/>
+          </Properties>
+        </Component>
+      </SubComponents>
     </Container>
   </SubComponents>
 </Form>

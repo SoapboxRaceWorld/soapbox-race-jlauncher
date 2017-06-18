@@ -5,17 +5,23 @@
  */
 package br.com.soapboxrace.jlauncher.swing;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
+
 /**
  *
  * @author Nishanth
  */
 public class ServerInfo extends javax.swing.JFrame {
+    
+    private ResourceBundle Text = ResourceBundle.getBundle("locales.locale", Locale.getDefault());
 
     /**
      * Creates new form ServerInfo
      */
     public ServerInfo() {
         initComponents();
+        
     }
 
     /**
@@ -28,19 +34,107 @@ public class ServerInfo extends javax.swing.JFrame {
     private void initComponents() {
 
         mainPanel = new javax.swing.JPanel();
+        serverNameLabel = new javax.swing.JLabel();
+        serverName = new javax.swing.JLabel();
+        serverDescriptionLabel = new javax.swing.JLabel();
+        serverDescription = new javax.swing.JLabel();
+        usersOnlineLabel = new javax.swing.JLabel();
+        usersOnline = new javax.swing.JLabel();
+        usersRegisteredLabel = new javax.swing.JLabel();
+        usersRegistered = new javax.swing.JLabel();
+        ownerListLabel = new javax.swing.JLabel();
+        ownersList = new javax.swing.JLabel();
+        adminListLabel = new javax.swing.JLabel();
+        adminList = new javax.swing.JLabel();
+        serverLocationLabel = new javax.swing.JLabel();
+        serverLocation = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Server Info");
+
+        serverNameLabel.setText(Text.getString("serverNameLabel"));
+
+        serverName.setText("W.I.P");
+
+        serverDescriptionLabel.setText(Text.getString("ServerDescription"));
+
+        serverDescription.setText("W.I.P");
+
+        usersOnlineLabel.setText(Text.getString("usersOnlineLabel"));
+
+        usersOnline.setText("W.I.P");
+
+        usersRegisteredLabel.setText(Text.getString("usersRegistered"));
+
+        usersRegistered.setText("W.I.P");
+
+        ownerListLabel.setText(Text.getString("ownerName"));
+
+        ownersList.setText("W.I.P");
+
+        adminListLabel.setText(Text.getString("adminList"));
+
+        adminList.setText("W.I.P");
+
+        serverLocationLabel.setText(Text.getString("originCountry"));
+
+        serverLocation.setText("W.I.P");
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(mainPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(serverNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(serverName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(serverDescriptionLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(serverDescription, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(usersOnlineLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(usersOnline, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(usersRegisteredLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(usersRegistered, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ownersList, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(serverLocation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ownerListLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(adminListLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(serverLocationLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                    .addComponent(adminList, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(mainPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(serverNameLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(serverName)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(serverDescriptionLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(serverDescription)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(usersOnlineLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(usersOnline)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(usersRegisteredLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(usersRegistered)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ownerListLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ownersList)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(adminListLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(adminList)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(serverLocationLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(serverLocation)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -54,7 +148,7 @@ public class ServerInfo extends javax.swing.JFrame {
             .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(416, 339));
+        setSize(new java.awt.Dimension(416, 327));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -86,14 +180,26 @@ public class ServerInfo extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ServerInfo().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new ServerInfo().setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel adminList;
+    private javax.swing.JLabel adminListLabel;
     private javax.swing.JPanel mainPanel;
+    private javax.swing.JLabel ownerListLabel;
+    private javax.swing.JLabel ownersList;
+    private javax.swing.JLabel serverDescription;
+    private javax.swing.JLabel serverDescriptionLabel;
+    private javax.swing.JLabel serverLocation;
+    private javax.swing.JLabel serverLocationLabel;
+    private javax.swing.JLabel serverName;
+    private javax.swing.JLabel serverNameLabel;
+    private javax.swing.JLabel usersOnline;
+    private javax.swing.JLabel usersOnlineLabel;
+    private javax.swing.JLabel usersRegistered;
+    private javax.swing.JLabel usersRegisteredLabel;
     // End of variables declaration//GEN-END:variables
 }
