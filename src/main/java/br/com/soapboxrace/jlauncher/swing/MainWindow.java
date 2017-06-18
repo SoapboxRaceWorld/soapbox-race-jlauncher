@@ -17,7 +17,7 @@ import br.com.soapboxrace.jlauncher.Main;
 import br.com.soapboxrace.jlauncher.util.ServerList;
 import br.com.soapboxrace.jlauncher.vo.ConfigVO;
 import br.com.soapboxrace.jlauncher.vo.LoginOkVO;
-import org.jdesktop.xswingx.PromptSupport;
+import org.jdesktop.swingx.prompt.PromptSupport;
 
 /**
  *

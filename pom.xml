@@ -59,10 +59,9 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>xswingx</groupId>
-      <artifactId>prompt</artifactId>
-      <version>1.0</version>
-      <type>jar</type>
+      <groupId>org.swinglabs</groupId>
+      <artifactId>swingx</artifactId>
+      <version>1.6.1</version>
     </dependency>
   </dependencies>
   <name>SBRW Launcher</name>
