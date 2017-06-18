@@ -119,21 +119,18 @@ public class MainWindow extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap(544, Short.MAX_VALUE)
-                        .addComponent(loginButton))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(loginEmailText)
-                            .addComponent(loginPasswordText))))
-                .addContainerGap())
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(loginSaveCredentialsCheckBox)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 534, Short.MAX_VALUE)
+                        .addComponent(loginButton))
+                    .addComponent(loginEmailText, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(loginPasswordText, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(loginSaveCredentialsCheckBox)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,7 +146,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        mainTabbedPane.addTab(Text.getString("Login"), jPanel2);
+        mainTabbedPane.addTab("Launcher", jPanel2);
 
         createButton.setText(Text.getString("CreateAccount"));
         createButton.addActionListener(new java.awt.event.ActionListener() {
@@ -192,7 +189,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        mainTabbedPane.addTab(Text.getString("Register"), jPanel3);
+        mainTabbedPane.addTab("Create Account", jPanel3);
 
         jLabel1.setText(Text.getString("ServerAddress"));
 
@@ -217,7 +214,7 @@ public class MainWindow extends javax.swing.JFrame {
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         messageLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        messageLabel.setText("<html><b>SoapBox Race World Online Launcher beta v0.0.5</b></html>");
+        messageLabel.setText("<html><b>SoapBox Race World Online Launcher Beta v0.0.5</b></html>");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
