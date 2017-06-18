@@ -73,32 +73,33 @@ public class MainWindow extends javax.swing.JFrame {
     private void initComponents() {
 
         fileChooser = new javax.swing.JFileChooser();
-        jPanel1 = new javax.swing.JPanel();
-        mainTabbedPane = new javax.swing.JTabbedPane();
-        jPanel2 = new javax.swing.JPanel();
+        mainPanel = new javax.swing.JPanel();
+        loginRegisterTabbedPanel = new javax.swing.JTabbedPane();
+        loginTab = new javax.swing.JPanel();
         loginEmailText = new javax.swing.JTextField();
         loginPasswordText = new javax.swing.JPasswordField();
         loginButton = new javax.swing.JButton();
         loginSaveCredentialsCheckBox = new javax.swing.JCheckBox();
-        jPanel3 = new javax.swing.JPanel();
+        registerTab = new javax.swing.JPanel();
         createTicketText = new javax.swing.JTextField();
         createPasswd1Text = new javax.swing.JPasswordField();
         createPasswd2Text = new javax.swing.JPasswordField();
         createEmailText = new javax.swing.JTextField();
         createButton = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        serverAddressText = new javax.swing.JLabel();
         pathLabel = new javax.swing.JLabel();
         changeGamePathButton = new javax.swing.JButton();
         launchButton = new javax.swing.JButton();
-        jPanel4 = new javax.swing.JPanel();
+        messageBase = new javax.swing.JPanel();
         messageLabel = new javax.swing.JLabel();
         serverAddrCombo = new javax.swing.JComboBox<>();
         srvListButton = new javax.swing.JButton();
+        serverInfoButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SoapBox World Racing Launcher");
 
-        mainTabbedPane.setEnabled(false);
+        loginRegisterTabbedPanel.setEnabled(false);
 
         loginEmailText.setEnabled(false);
 
@@ -115,38 +116,38 @@ public class MainWindow extends javax.swing.JFrame {
         loginSaveCredentialsCheckBox.setEnabled(false);
         loginSaveCredentialsCheckBox.setLabel(Text.getString("SaveCredentials"));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout loginTabLayout = new javax.swing.GroupLayout(loginTab);
+        loginTab.setLayout(loginTabLayout);
+        loginTabLayout.setHorizontalGroup(
+            loginTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(loginTabLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(loginTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(loginTabLayout.createSequentialGroup()
                         .addGap(0, 534, Short.MAX_VALUE)
                         .addComponent(loginButton))
                     .addComponent(loginEmailText, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(loginPasswordText, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGroup(loginTabLayout.createSequentialGroup()
                         .addComponent(loginSaveCredentialsCheckBox)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        loginTabLayout.setVerticalGroup(
+            loginTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(loginTabLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(loginEmailText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(loginPasswordText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(loginSaveCredentialsCheckBox)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 139, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
                 .addComponent(loginButton)
                 .addContainerGap())
         );
 
-        mainTabbedPane.addTab("Launcher", jPanel2);
+        loginRegisterTabbedPanel.addTab("Launcher", loginTab);
 
         createButton.setText(Text.getString("CreateAccount"));
         createButton.addActionListener(new java.awt.event.ActionListener() {
@@ -155,27 +156,27 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout registerTabLayout = new javax.swing.GroupLayout(registerTab);
+        registerTab.setLayout(registerTabLayout);
+        registerTabLayout.setHorizontalGroup(
+            registerTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, registerTabLayout.createSequentialGroup()
+                .addGroup(registerTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(registerTabLayout.createSequentialGroup()
                         .addGap(0, 544, Short.MAX_VALUE)
                         .addComponent(createButton))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, registerTabLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(registerTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(createPasswd1Text)
                             .addComponent(createEmailText, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(createTicketText)
                             .addComponent(createPasswd2Text, javax.swing.GroupLayout.Alignment.LEADING))))
                 .addContainerGap())
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        registerTabLayout.setVerticalGroup(
+            registerTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(registerTabLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(createEmailText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -184,14 +185,14 @@ public class MainWindow extends javax.swing.JFrame {
                 .addComponent(createPasswd2Text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(createTicketText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(createButton)
                 .addContainerGap())
         );
 
-        mainTabbedPane.addTab("Create Account", jPanel3);
+        loginRegisterTabbedPanel.addTab("Create Account", registerTab);
 
-        jLabel1.setText(Text.getString("ServerAddress"));
+        serverAddressText.setText(Text.getString("ServerAddress"));
 
         pathLabel.setText(Text.getString("ChooseGamePath"));
 
@@ -211,23 +212,23 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        messageBase.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         messageLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         messageLabel.setText("<html><b>SoapBox Race World Online Launcher Beta v0.0.6</b></html>");
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        javax.swing.GroupLayout messageBaseLayout = new javax.swing.GroupLayout(messageBase);
+        messageBase.setLayout(messageBaseLayout);
+        messageBaseLayout.setHorizontalGroup(
+            messageBaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(messageBaseLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(messageLabel)
                 .addContainerGap())
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+        messageBaseLayout.setVerticalGroup(
+            messageBaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, messageBaseLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(messageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -249,68 +250,82 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainTabbedPane, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        serverInfoButton.setText(Text.getString("GetServerInfo"));
+        serverInfoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                serverInfoButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
+        mainPanel.setLayout(mainPanelLayout);
+        mainPanelLayout.setHorizontalGroup(
+            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(loginRegisterTabbedPanel, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(mainPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
+                        .addComponent(messageBase, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(launchButton))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(mainPanelLayout.createSequentialGroup()
                                 .addComponent(changeGamePathButton)
                                 .addGap(18, 18, 18)
                                 .addComponent(pathLabel))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
+                            .addGroup(mainPanelLayout.createSequentialGroup()
+                                .addComponent(serverAddressText)
                                 .addGap(18, 18, 18)
                                 .addComponent(serverAddrCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGap(18, 18, 18)
-                        .addComponent(srvListButton)))
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(srvListButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(serverInfoButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        mainPanelLayout.setVerticalGroup(
+            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(serverAddressText)
                         .addComponent(serverAddrCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(srvListButton))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(changeGamePathButton)
-                    .addComponent(pathLabel))
+                    .addComponent(srvListButton, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(mainTabbedPane)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(launchButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(changeGamePathButton)
+                    .addComponent(pathLabel)
+                    .addComponent(serverInfoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(loginRegisterTabbedPanel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(messageBase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(launchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(2, 2, 2))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mainPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mainPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(674, 485));
+        pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void serverInfoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_serverInfoButtonActionPerformed
+        new ServerInfo().setVisible(true);
+    }//GEN-LAST:event_serverInfoButtonActionPerformed
 
 	private void serverAddrComboActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_serverAddrComboActionPerformed
 		// TODO add your handling code here:
@@ -449,20 +464,21 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JPasswordField createPasswd2Text;
     private javax.swing.JTextField createTicketText;
     private javax.swing.JFileChooser fileChooser;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JButton launchButton;
     private javax.swing.JButton loginButton;
     private javax.swing.JTextField loginEmailText;
     private javax.swing.JPasswordField loginPasswordText;
+    private javax.swing.JTabbedPane loginRegisterTabbedPanel;
     private javax.swing.JCheckBox loginSaveCredentialsCheckBox;
-    private javax.swing.JTabbedPane mainTabbedPane;
+    private javax.swing.JPanel loginTab;
+    private javax.swing.JPanel mainPanel;
+    private javax.swing.JPanel messageBase;
     private javax.swing.JLabel messageLabel;
     private javax.swing.JLabel pathLabel;
+    private javax.swing.JPanel registerTab;
     private javax.swing.JComboBox<String> serverAddrCombo;
+    private javax.swing.JLabel serverAddressText;
+    private javax.swing.JButton serverInfoButton;
     private javax.swing.JButton srvListButton;
     // End of variables declaration//GEN-END:variables
 
@@ -475,7 +491,7 @@ public class MainWindow extends javax.swing.JFrame {
 	}
 
 	public void enableAll() {
-		mainTabbedPane.setEnabled(true);
+		loginRegisterTabbedPanel.setEnabled(true);
 		loginEmailText.setEnabled(true);
 		loginPasswordText.setEnabled(true);
 		loginSaveCredentialsCheckBox.setEnabled(true);
@@ -483,8 +499,8 @@ public class MainWindow extends javax.swing.JFrame {
 	}
 
 	public void disableAll() {
-		mainTabbedPane.setSelectedIndex(0);
-		mainTabbedPane.setEnabled(false);
+		loginRegisterTabbedPanel.setSelectedIndex(0);
+		loginRegisterTabbedPanel.setEnabled(false);
 		loginEmailText.setEnabled(false);
 		loginPasswordText.setEnabled(false);
 		loginSaveCredentialsCheckBox.setEnabled(false);
