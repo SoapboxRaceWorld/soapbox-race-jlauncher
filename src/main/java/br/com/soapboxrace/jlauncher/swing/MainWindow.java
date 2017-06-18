@@ -55,7 +55,7 @@ public class MainWindow extends javax.swing.JFrame {
                 if (passwordSHA1.equals("")) {
 			PromptSupport.setPrompt(Text.getString("Password"), loginPasswordText);
 		}else {
-                        loginPasswordText.setText("Sneak");
+                        loginPasswordText.setText("********************");
                 }
 		loginSaveCredentialsCheckBox.setSelected(configVO.isSaveCredentials());
                 PromptSupport.setPrompt(Text.getString("EnterEmail"), createEmailText);
@@ -146,7 +146,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        mainTabbedPane.addTab(Text.getString("Login"), jPanel2);
+        mainTabbedPane.addTab("Launcher", jPanel2);
 
         createButton.setText(Text.getString("CreateAccount"));
         createButton.addActionListener(new java.awt.event.ActionListener() {
@@ -189,7 +189,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        mainTabbedPane.addTab(Text.getString("Register"), jPanel3);
+        mainTabbedPane.addTab("Create Account", jPanel3);
 
         jLabel1.setText(Text.getString("ServerAddress"));
 
@@ -308,7 +308,8 @@ public class MainWindow extends javax.swing.JFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        pack();
+        setSize(new java.awt.Dimension(674, 485));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
 	private void serverAddrComboActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_serverAddrComboActionPerformed
