@@ -8,11 +8,20 @@ package br.com.soapboxrace.jlauncher.swing;
 import java.util.ResourceBundle;
 import java.util.Locale;
 
+import br.com.soapboxrace.jlauncher.vo.ServerInfoVO;
+import com.google.gson.Gson;
+import java.io.IOException;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+
 /**
  *
  * @author Vanquish
  */
 public class ServerInfo extends javax.swing.JFrame {
+
+    String serverIP = "173.230.136.12";
 
     private ResourceBundle Text = ResourceBundle.getBundle("locales.locale", Locale.getDefault());
 
@@ -23,53 +32,58 @@ public class ServerInfo extends javax.swing.JFrame {
         initComponents();
     }
 
-    public class ServerInformation {
+    /**
+     * @param args the command line arguments
+     */
+    private static OkHttpClient client = new OkHttpClient();
 
-        private String messageSrv;
+    public static void main(String args[]) {
 
-        public String getMessageSrv() {
-            return this.messageSrv;
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(ServerInfo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(() -> {
+            new ServerInfo().setVisible(true);
+        });
+
+    }
+
+    public static String getJSON(String url) throws IOException {
+        Request request = new Request.Builder()
+                .url(url)
+                .build();
+
+        Response response = client.newCall(request).execute();
+        return response.body().string();
+    }
+
+    public static void getServerInfo(String serverIP) {
+        String json = null;
+        try {
+            json = getJSON("http://" + serverIP + ":8680/soapbox-race-core/Engine.svc/GetServerInformation");
+        } catch (IOException e) {
         }
 
-        private String serverName;
+        Gson gson = new Gson();
 
-        public String getServerName() {
-            return this.serverName;
-        }
-
-        private String adminList;
-
-        public String getAdminList() {
-            return this.adminList;
-        }
-
-        public void setAdminList(String adminList) {
-            this.adminList = adminList;
-        }
-
-        private String ownerList;
-
-        public String getOwnerList() {
-            return this.ownerList;
-        }
-
-        private int numberOfRegistered;
-
-        public int getNumberOfRegistered() {
-            return this.numberOfRegistered;
-        }
-
-        private int onlineNumber;
-
-        public int getOnlineNumber() {
-            return this.onlineNumber;
-        }
-
-        private String country;
-
-        public String getCountry() {
-            return this.country;
-        }
+        ServerInfoVO serverInfo = gson.fromJson(json, ServerInfoVO.class);
     }
 
     /**
@@ -199,40 +213,6 @@ public class ServerInfo extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ServerInfo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ServerInfo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ServerInfo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ServerInfo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> {
-            new ServerInfo().setVisible(true);
-        });
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel adminList;
     private javax.swing.JLabel adminListLabel;
