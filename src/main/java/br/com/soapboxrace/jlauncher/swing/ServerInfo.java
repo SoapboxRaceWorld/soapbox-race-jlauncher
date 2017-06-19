@@ -13,17 +13,63 @@ import java.util.Locale;
  * @author Vanquish
  */
 public class ServerInfo extends javax.swing.JFrame {
-    
-     private ResourceBundle Text = ResourceBundle.getBundle("locales.locale", Locale.getDefault());
-     
-     
-     
-     
+
+    private ResourceBundle Text = ResourceBundle.getBundle("locales.locale", Locale.getDefault());
+
     /**
      * Creates new form ServerInfo
      */
     public ServerInfo() {
         initComponents();
+    }
+
+    public class ServerInformation {
+
+        private String messageSrv;
+
+        public String getMessageSrv() {
+            return this.messageSrv;
+        }
+
+        private String serverName;
+
+        public String getServerName() {
+            return this.serverName;
+        }
+
+        private String adminList;
+
+        public String getAdminList() {
+            return this.adminList;
+        }
+
+        public void setAdminList(String adminList) {
+            this.adminList = adminList;
+        }
+
+        private String ownerList;
+
+        public String getOwnerList() {
+            return this.ownerList;
+        }
+
+        private int numberOfRegistered;
+
+        public int getNumberOfRegistered() {
+            return this.numberOfRegistered;
+        }
+
+        private int onlineNumber;
+
+        public int getOnlineNumber() {
+            return this.onlineNumber;
+        }
+
+        private String country;
+
+        public String getCountry() {
+            return this.country;
+        }
     }
 
     /**
@@ -182,10 +228,8 @@ public class ServerInfo extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ServerInfo().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new ServerInfo().setVisible(true);
         });
     }
 

@@ -12,66 +12,66 @@ import br.com.soapboxrace.jlauncher.vo.UserVO;
 
 public class HttpRequest {
 
-	private String serverUrl;
+    private String serverUrl;
 
-	public HttpRequest(String serverUrl) {
-		this.serverUrl = serverUrl;
-	}
+    public HttpRequest(String serverUrl) {
+        this.serverUrl = serverUrl;
+    }
 
-	public String getLoginURL(UserVO userVO) {
-		StringBuilder stringBuilder = new StringBuilder();
-		stringBuilder.append(serverUrl);
-		stringBuilder.append("/soapbox-race-core/Engine.svc/User/authenticateUser?email=");
-		stringBuilder.append(userVO.getEmail());
-		stringBuilder.append("&password=");
-		stringBuilder.append(userVO.getShaPassword());
-		return stringBuilder.toString();
-	}
+    public String getLoginURL(UserVO userVO) {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(serverUrl);
+        stringBuilder.append("/soapbox-race-core/Engine.svc/User/authenticateUser?email=");
+        stringBuilder.append(userVO.getEmail());
+        stringBuilder.append("&password=");
+        stringBuilder.append(userVO.getShaPassword());
+        return stringBuilder.toString();
+    }
 
-	public String getCreateURL(UserVO userVO) {
-		StringBuilder stringBuilder = new StringBuilder();
-		stringBuilder.append(serverUrl);
-		stringBuilder.append("/soapbox-race-core/Engine.svc/User/createUser?email=");
-		stringBuilder.append(userVO.getEmail());
-		stringBuilder.append("&password=");
-		stringBuilder.append(userVO.getShaPassword());
-		stringBuilder.append("&inviteTicket=");
-		stringBuilder.append(userVO.getInviteTicket());
-		return stringBuilder.toString();
-	}
+    public String getCreateURL(UserVO userVO) {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(serverUrl);
+        stringBuilder.append("/soapbox-race-core/Engine.svc/User/createUser?email=");
+        stringBuilder.append(userVO.getEmail());
+        stringBuilder.append("&password=");
+        stringBuilder.append(userVO.getShaPassword());
+        stringBuilder.append("&inviteTicket=");
+        stringBuilder.append(userVO.getInviteTicket());
+        return stringBuilder.toString();
+    }
 
-	public RequestVO doRequest(String url) {
-		RequestVO requestVO = null;
-		try {
-			URL serverAuth = new URL(url);
-			HttpURLConnection serverCon = (HttpURLConnection) serverAuth.openConnection();
-			serverCon.setRequestMethod("GET");
-			serverCon.setRequestProperty("Accept-Encoding", "gzip");
-			InputStream inputStream = null;
-			int responseCode = serverCon.getResponseCode();
-			if (responseCode == 200) {
-				inputStream = serverCon.getInputStream();
-			} else {
-				inputStream = serverCon.getErrorStream();
-			}
-			GZIPInputStream gzipInputStream = new GZIPInputStream(inputStream);
-			InputStreamReader inputStreamReader = new InputStreamReader(gzipInputStream);
-			BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-			String inputLine;
-			StringBuffer response = new StringBuffer();
-			while ((inputLine = bufferedReader.readLine()) != null) {
-				response.append(inputLine);
-				response.append("\n");
-			}
-			requestVO = new RequestVO(responseCode, response.toString());
-			bufferedReader.close();
-		} catch (Exception e) {
-			String message = e.getMessage();
-			message = message.replace(";", " ");
-			message = message.replace("&", "&amp;");
-			requestVO = new RequestVO(500, "<EngineExceptionTrans><Description>Launcher error [" + message + "]</Description></EngineExceptionTrans>");
-		}
-		return requestVO;
-	}
+    public RequestVO doRequest(String url) {
+        RequestVO requestVO = null;
+        try {
+            URL serverAuth = new URL(url);
+            HttpURLConnection serverCon = (HttpURLConnection) serverAuth.openConnection();
+            serverCon.setRequestMethod("GET");
+            serverCon.setRequestProperty("Accept-Encoding", "gzip");
+            InputStream inputStream = null;
+            int responseCode = serverCon.getResponseCode();
+            if (responseCode == 200) {
+                inputStream = serverCon.getInputStream();
+            } else {
+                inputStream = serverCon.getErrorStream();
+            }
+            GZIPInputStream gzipInputStream = new GZIPInputStream(inputStream);
+            InputStreamReader inputStreamReader = new InputStreamReader(gzipInputStream);
+            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+            String inputLine;
+            StringBuffer response = new StringBuffer();
+            while ((inputLine = bufferedReader.readLine()) != null) {
+                response.append(inputLine);
+                response.append("\n");
+            }
+            requestVO = new RequestVO(responseCode, response.toString());
+            bufferedReader.close();
+        } catch (Exception e) {
+            String message = e.getMessage();
+            message = message.replace(";", " ");
+            message = message.replace("&", "&amp;");
+            requestVO = new RequestVO(500, "<EngineExceptionTrans><Description>Launcher error [" + message + "]</Description></EngineExceptionTrans>");
+        }
+        return requestVO;
+    }
 
 }
