@@ -367,7 +367,6 @@ public class MainWindow extends javax.swing.JFrame {
 			System.exit(0);
 		} catch (IOException e) {
 			setErrorMessage(e.getMessage());
-			e.printStackTrace();
 		}
 	}// GEN-LAST:event_launchButtonActionPerformed
 
@@ -511,7 +510,7 @@ public class MainWindow extends javax.swing.JFrame {
 	private void checkGameFile(String path) {
 		if (Main.checkGameMd5(path)) {
 			enableAll();
-			setMessage("SoapBox Race World Online Launcher beta v0.0.5");
+			setMessage("SoapBox Race World Online Launcher Beta v0.0.6");
 		} else {
 			disableAll();
 			setErrorMessage("Invalid or modded game file!");
