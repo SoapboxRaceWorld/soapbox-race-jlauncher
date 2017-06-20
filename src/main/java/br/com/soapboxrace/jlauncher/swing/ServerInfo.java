@@ -21,16 +21,7 @@ import okhttp3.Response;
  */
 public class ServerInfo extends javax.swing.JFrame {
 
-    String serverIP = "173.230.136.12";
-
     private ResourceBundle Text = ResourceBundle.getBundle("locales.locale", Locale.getDefault());
-
-    /**
-     * Creates new form ServerInfo
-     */
-    public ServerInfo() {
-        initComponents();
-    }
 
     /**
      * @param args the command line arguments
@@ -74,7 +65,7 @@ public class ServerInfo extends javax.swing.JFrame {
         return response.body().string();
     }
 
-    public static void getServerInfo(String serverIP) {
+    public static ServerInfoVO getServerInfo(String serverIP) {
         String json = null;
         try {
             json = getJSON("http://" + serverIP + ":8680/soapbox-race-core/Engine.svc/GetServerInformation");
@@ -84,6 +75,31 @@ public class ServerInfo extends javax.swing.JFrame {
         Gson gson = new Gson();
 
         ServerInfoVO serverInfo = gson.fromJson(json, ServerInfoVO.class);
+        return serverInfo;
+    }
+
+    /**
+     * Creates new form ServerInfo
+     */
+    public ServerInfo() {
+        String serverIP = "173.230.136.12";
+                String json = null;
+        try {
+            json = getJSON("http://" + serverIP + ":8680/soapbox-race-core/Engine.svc/GetServerInformation");
+        } catch (IOException e) {
+        }
+
+        Gson gson = new Gson();
+
+        ServerInfoVO serverInfo = gson.fromJson(json, ServerInfoVO.class);
+        initComponents();
+        serverName.setText(serverInfo.getServerName());
+        serverDescription.setText(serverInfo.getMessageSrv());
+        serverLocation.setText(serverInfo.getCountry());
+        usersOnline.setText(serverInfo.getOnlineNumber());
+        usersRegistered.setText(serverInfo.getNumberOfRegistered());
+        ownerList.setText(serverInfo.getOwnerList());
+        adminList.setText(serverInfo.getAdminList());
     }
 
     /**
