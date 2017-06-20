@@ -100,6 +100,8 @@ public class MainWindow extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SoapBox World Racing Launcher");
+		
+		serverInfoButton.setEnabled(false);
 
         loginRegisterTabbedPanel.setEnabled(false);
 
@@ -340,7 +342,7 @@ public class MainWindow extends javax.swing.JFrame {
         try {
             String[] serverListStr = serverList.getServerList();
             for (String string : serverListStr) {
-                serverAddrCombo.addItem(string);
+                serverAddrCombo.addItem(string); 
             }
         } catch (Exception e) {
             setErrorMessage("Error loading server list");
@@ -388,9 +390,11 @@ public class MainWindow extends javax.swing.JFrame {
             boolean doCreate = create.doCreate(password2, ticket);
             if (!doCreate) {
                 launchButton.setEnabled(false);
+                serverInfoButton.setEnabled(true);
                 setErrorMessage(create.getMessage());
             } else {
                 launchButton.setEnabled(true);
+                serverInfoButton.setEnabled(true);
                 setMessage(create.getMessage() + " Launch Game!");
             }
             loginOkVO = create.getLoginOkVO();
@@ -403,6 +407,7 @@ public class MainWindow extends javax.swing.JFrame {
         if (!Main.copyModules(pathLabel.getText())) {
             setErrorMessage("Can't copy module files to game folder, please check folder permissions, or run as admin");
             launchButton.setEnabled(false);
+            serverInfoButton.setEnabled(true);
             return;
         }
         String url = getUrl();
@@ -412,11 +417,13 @@ public class MainWindow extends javax.swing.JFrame {
         if (login.doLogin()) {
             loginOkVO = login.getLoginOkVO();
             launchButton.setEnabled(true);
+            serverInfoButton.setEnabled(true);
             setMessage("Login OK, Launch Game!");
         } else {
             loginOkVO = null;
             String message = login.getMessage();
             launchButton.setEnabled(false);
+            serverInfoButton.setEnabled(true);
             setErrorMessage(message);
         }
     }// GEN-LAST:event_loginButtonActionPerformed
@@ -504,6 +511,7 @@ public class MainWindow extends javax.swing.JFrame {
         loginPasswordText.setEnabled(false);
         loginSaveCredentialsCheckBox.setEnabled(false);
         loginButton.setEnabled(false);
+        serverInfoButton.setEnabled(false);
     }
 
     private void checkGameFile(String path) {
@@ -516,10 +524,11 @@ public class MainWindow extends javax.swing.JFrame {
         }
     }
 
-    private String getUrl() {
+    public String getUrl() {
         String selectedItem = (String) serverAddrCombo.getSelectedItem();
         String[] split = selectedItem.split(";");
         System.out.println(split[1]);
         return split[1];
     }
+    
 }

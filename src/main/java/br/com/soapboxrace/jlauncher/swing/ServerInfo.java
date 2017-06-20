@@ -65,29 +65,17 @@ public class ServerInfo extends javax.swing.JFrame {
         return response.body().string();
     }
 
-    public static ServerInfoVO getServerInfo(String serverIP) {
-        String json = null;
-        try {
-            json = getJSON("http://" + serverIP + ":8680/soapbox-race-core/Engine.svc/GetServerInformation");
-        } catch (IOException e) {
-        }
-
-        Gson gson = new Gson();
-
-        ServerInfoVO serverInfo = gson.fromJson(json, ServerInfoVO.class);
-        return serverInfo;
-    }
-
     /**
      * Creates new form ServerInfo
      */
     public ServerInfo() {
-        String serverIP = "173.230.136.12";
+        MainWindow mainWindow = new MainWindow();
+        String URL = mainWindow.getUrl();
                 String json = null;
         try {
-            json = getJSON("http://" + serverIP + ":8680/soapbox-race-core/Engine.svc/GetServerInformation");
+            json = getJSON(URL + "/soapbox-race-core/Engine.svc/GetServerInformation");
         } catch (IOException e) {
-        }
+        } 
 
         Gson gson = new Gson();
 
