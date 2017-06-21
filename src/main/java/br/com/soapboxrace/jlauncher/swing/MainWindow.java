@@ -375,8 +375,9 @@ public class MainWindow extends javax.swing.JFrame {
     }// GEN-LAST:event_launchButtonActionPerformed
 
     private void createButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_createButtonActionPerformed
+        
         if (!Main.copyModules(pathLabel.getText())) {
-            setErrorMessage("Can't copy module files to game folder, please check folder permissions, or run as admin");
+            setErrorMessage(Text.getString("ErrorModuleToGameFiles"));
             launchButton.setEnabled(false);
             return;
         }
@@ -395,7 +396,7 @@ public class MainWindow extends javax.swing.JFrame {
             } else {
                 launchButton.setEnabled(true);
                 serverInfoButton.setEnabled(true);
-                setMessage(create.getMessage() + " Launch Game!");
+                setMessage(create.getMessage() + Text.getString("LaunchGame"));
             }
             loginOkVO = create.getLoginOkVO();
         } catch (Exception e) {
@@ -405,7 +406,7 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_loginButtonActionPerformed
         if (!Main.copyModules(pathLabel.getText())) {
-            setErrorMessage("Can't copy module files to game folder, please check folder permissions, or run as admin");
+            setErrorMessage(Text.getString("ErrorModuleToGameFiles"));
             launchButton.setEnabled(false);
             serverInfoButton.setEnabled(true);
             return;
@@ -418,7 +419,7 @@ public class MainWindow extends javax.swing.JFrame {
             loginOkVO = login.getLoginOkVO();
             launchButton.setEnabled(true);
             serverInfoButton.setEnabled(true);
-            setMessage("Login OK, Launch Game!");
+            setMessage(Text.getString("LoginOkLaunchGame"));
         } else {
             loginOkVO = null;
             String message = login.getMessage();
@@ -517,10 +518,10 @@ public class MainWindow extends javax.swing.JFrame {
     private void checkGameFile(String path) {
         if (Main.checkGameMd5(path)) {
             enableAll();
-            setMessage("SoapBox Race World Online Launcher Beta v0.0.6");
+            setMessage(Text.getString("SoapBox"));
         } else {
             disableAll();
-            setErrorMessage("Invalid or modded game file!");
+            setErrorMessage(Text.getString("InvalidOrModdedGameFile"));
         }
     }
 

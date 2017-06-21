@@ -43,13 +43,6 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="serverDescriptionLabel" max="32767" attributes="0"/>
-                      <Component id="serverDescription" alignment="0" max="32767" attributes="0"/>
-                      <Component id="serverLocationLabel" alignment="0" max="32767" attributes="0"/>
-                      <Component id="serverLocation" alignment="0" max="32767" attributes="0"/>
-                      <Component id="usersOnlineLabel" alignment="0" max="32767" attributes="0"/>
-                      <Component id="usersOnline" alignment="0" max="32767" attributes="0"/>
-                      <Component id="usersRegisteredLabel" alignment="0" pref="476" max="32767" attributes="0"/>
                       <Component id="usersRegistered" alignment="0" max="32767" attributes="0"/>
                       <Component id="ownerListLabel" alignment="0" max="32767" attributes="0"/>
                       <Component id="adminList" alignment="0" max="32767" attributes="0"/>
@@ -57,6 +50,13 @@
                       <Component id="serverNameLabel" alignment="1" max="32767" attributes="0"/>
                       <Component id="ownerList" alignment="0" max="32767" attributes="0"/>
                       <Component id="adminListLabel" alignment="1" max="32767" attributes="0"/>
+                      <Component id="serverDescription" alignment="1" max="32767" attributes="0"/>
+                      <Component id="usersOnlineLabel" alignment="0" max="32767" attributes="0"/>
+                      <Component id="serverLocation" alignment="0" max="32767" attributes="0"/>
+                      <Component id="usersOnline" max="32767" attributes="0"/>
+                      <Component id="usersRegisteredLabel" alignment="0" pref="510" max="32767" attributes="0"/>
+                      <Component id="serverDescriptionLabel" max="32767" attributes="0"/>
+                      <Component id="serverLocationLabel" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -67,29 +67,29 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="serverNameLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="serverName" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                   <Component id="serverDescriptionLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="serverDescription" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="serverLocationLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="serverLocation" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                   <Component id="usersOnlineLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="usersOnline" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="usersRegisteredLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="usersRegistered" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="ownerListLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="ownerList" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="adminListLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="adminList" min="-2" max="-2" attributes="0"/>
@@ -102,7 +102,7 @@
         <Component class="javax.swing.JLabel" name="serverNameLabel">
           <Properties>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="Text.getString(&quot;ServerName&quot;)" type="code"/>
+              <Connection code="&quot;&lt;html&gt;&lt;b&gt;&quot; + Text.getString(&quot;ServerName&quot;) + &quot;&lt;/b&gt;&lt;/html&gt;&quot;" type="code"/>
             </Property>
           </Properties>
         </Component>
@@ -114,7 +114,7 @@
         <Component class="javax.swing.JLabel" name="serverDescriptionLabel">
           <Properties>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="Text.getString(&quot;ServerDescription&quot;)" type="code"/>
+              <Connection code="&quot;&lt;html&gt;&lt;b&gt;&quot; + Text.getString(&quot;ServerDescription&quot;) + &quot;&lt;/b&gt;&lt;/html&gt;&quot;" type="code"/>
             </Property>
           </Properties>
         </Component>
@@ -126,7 +126,7 @@
         <Component class="javax.swing.JLabel" name="serverLocationLabel">
           <Properties>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="Text.getString(&quot;originCountry&quot;)" type="code"/>
+              <Connection code="&quot;&lt;html&gt;&lt;b&gt;&quot; + Text.getString(&quot;originCountry&quot;) + &quot;&lt;/b&gt;&lt;/html&gt;&quot;" type="code"/>
             </Property>
           </Properties>
         </Component>
@@ -138,7 +138,7 @@
         <Component class="javax.swing.JLabel" name="usersOnlineLabel">
           <Properties>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="Text.getString(&quot;onlineUsers&quot;)" type="code"/>
+              <Connection code="&quot;&lt;html&gt;&lt;b&gt;&quot; + Text.getString(&quot;onlineUsers&quot;) + &quot;&lt;/b&gt;&lt;/html&gt;&quot;" type="code"/>
             </Property>
           </Properties>
         </Component>
@@ -150,7 +150,7 @@
         <Component class="javax.swing.JLabel" name="usersRegisteredLabel">
           <Properties>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="Text.getString(&quot;registeredUsers&quot;)" type="code"/>
+              <Connection code="&quot;&lt;html&gt;&lt;b&gt;&quot; + Text.getString(&quot;registeredUsers&quot;) + &quot;&lt;/b&gt;&lt;/html&gt;&quot;" type="code"/>
             </Property>
           </Properties>
         </Component>
@@ -162,7 +162,7 @@
         <Component class="javax.swing.JLabel" name="ownerListLabel">
           <Properties>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="Text.getString(&quot;ownerName&quot;)" type="code"/>
+              <Connection code="&quot;&lt;html&gt;&lt;b&gt;&quot; + Text.getString(&quot;ownerName&quot;) + &quot;&lt;/b&gt;&lt;/html&gt;&quot;" type="code"/>
             </Property>
           </Properties>
         </Component>
@@ -179,7 +179,7 @@
         <Component class="javax.swing.JLabel" name="adminListLabel">
           <Properties>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="Text.getString(&quot;adminList&quot;)" type="code"/>
+              <Connection code="&quot;&lt;html&gt;&lt;b&gt;&quot; + Text.getString(&quot;adminList&quot;) + &quot;&lt;/b&gt;&lt;/html&gt;&quot;" type="code"/>
             </Property>
           </Properties>
         </Component>
