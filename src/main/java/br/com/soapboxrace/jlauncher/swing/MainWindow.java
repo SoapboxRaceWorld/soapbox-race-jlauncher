@@ -63,7 +63,6 @@ public class MainWindow extends javax.swing.JFrame {
         PromptSupport.setPrompt(Text.getString("EnterPassword"), createPasswd1Text);
         PromptSupport.setPrompt(Text.getString("ConfirmPassword"), createPasswd2Text);
         PromptSupport.setPrompt(Text.getString("InviteTicket"), createTicketText);
-
     }
 
     /**
@@ -100,8 +99,6 @@ public class MainWindow extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SoapBox World Racing Launcher");
-		
-		serverInfoButton.setEnabled(false);
 
         loginRegisterTabbedPanel.setEnabled(false);
 
@@ -130,11 +127,11 @@ public class MainWindow extends javax.swing.JFrame {
                     .addGroup(loginTabLayout.createSequentialGroup()
                         .addGap(0, 534, Short.MAX_VALUE)
                         .addComponent(loginButton))
-                    .addComponent(loginEmailText, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(loginPasswordText, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(loginTabLayout.createSequentialGroup()
                         .addComponent(loginSaveCredentialsCheckBox)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(loginEmailText, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
         loginTabLayout.setVerticalGroup(
@@ -329,7 +326,13 @@ public class MainWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void serverInfoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_serverInfoButtonActionPerformed
-        new ServerInfo().setVisible(true);
+        String URL;
+        URL = getUrl();
+        try {
+            new ServerInfo(URL).setVisible(true);
+        } catch (NullPointerException e) {
+            setErrorMessage(Text.getString("ServerInformationNotAvailable"));
+        }
     }//GEN-LAST:event_serverInfoButtonActionPerformed
 
     private void serverAddrComboActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_serverAddrComboActionPerformed
@@ -342,10 +345,10 @@ public class MainWindow extends javax.swing.JFrame {
         try {
             String[] serverListStr = serverList.getServerList();
             for (String string : serverListStr) {
-                serverAddrCombo.addItem(string); 
+                serverAddrCombo.addItem(string);
             }
         } catch (Exception e) {
-            setErrorMessage("Error loading server list");
+            setErrorMessage(Text.getString("ErrorLoadingServerList"));
         }
     }// GEN-LAST:event_srvListButtonActionPerformed
 
@@ -375,7 +378,7 @@ public class MainWindow extends javax.swing.JFrame {
     }// GEN-LAST:event_launchButtonActionPerformed
 
     private void createButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_createButtonActionPerformed
-        
+
         if (!Main.copyModules(pathLabel.getText())) {
             setErrorMessage(Text.getString("ErrorModuleToGameFiles"));
             launchButton.setEnabled(false);
@@ -391,11 +394,9 @@ public class MainWindow extends javax.swing.JFrame {
             boolean doCreate = create.doCreate(password2, ticket);
             if (!doCreate) {
                 launchButton.setEnabled(false);
-                serverInfoButton.setEnabled(true);
                 setErrorMessage(create.getMessage());
             } else {
                 launchButton.setEnabled(true);
-                serverInfoButton.setEnabled(true);
                 setMessage(create.getMessage() + Text.getString("LaunchGame"));
             }
             loginOkVO = create.getLoginOkVO();
@@ -408,7 +409,6 @@ public class MainWindow extends javax.swing.JFrame {
         if (!Main.copyModules(pathLabel.getText())) {
             setErrorMessage(Text.getString("ErrorModuleToGameFiles"));
             launchButton.setEnabled(false);
-            serverInfoButton.setEnabled(true);
             return;
         }
         String url = getUrl();
@@ -418,13 +418,11 @@ public class MainWindow extends javax.swing.JFrame {
         if (login.doLogin()) {
             loginOkVO = login.getLoginOkVO();
             launchButton.setEnabled(true);
-            serverInfoButton.setEnabled(true);
             setMessage(Text.getString("LoginOkLaunchGame"));
         } else {
             loginOkVO = null;
             String message = login.getMessage();
             launchButton.setEnabled(false);
-            serverInfoButton.setEnabled(true);
             setErrorMessage(message);
         }
     }// GEN-LAST:event_loginButtonActionPerformed
@@ -512,7 +510,6 @@ public class MainWindow extends javax.swing.JFrame {
         loginPasswordText.setEnabled(false);
         loginSaveCredentialsCheckBox.setEnabled(false);
         loginButton.setEnabled(false);
-        serverInfoButton.setEnabled(false);
     }
 
     private void checkGameFile(String path) {
@@ -531,5 +528,5 @@ public class MainWindow extends javax.swing.JFrame {
         System.out.println(split[1]);
         return split[1];
     }
-    
+
 }

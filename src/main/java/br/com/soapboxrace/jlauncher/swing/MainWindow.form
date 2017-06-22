@@ -135,12 +135,12 @@
                                   <EmptySpace min="0" pref="534" max="32767" attributes="0"/>
                                   <Component id="loginButton" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="loginEmailText" alignment="1" max="32767" attributes="0"/>
                               <Component id="loginPasswordText" alignment="1" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="loginSaveCredentialsCheckBox" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
+                              <Component id="loginEmailText" alignment="1" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>

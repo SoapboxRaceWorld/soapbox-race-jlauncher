@@ -48,12 +48,6 @@ public class ServerInfo extends javax.swing.JFrame {
         //</editor-fold>
 
         //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> {
-            new ServerInfo().setVisible(true);
-        });
-
     }
 
     public static String getJSON(String url) throws IOException {
@@ -67,15 +61,15 @@ public class ServerInfo extends javax.swing.JFrame {
 
     /**
      * Creates new form ServerInfo
+     *
+     * @param URL
      */
-    public ServerInfo() {
-        MainWindow mainWindow = new MainWindow();
-        String URL = mainWindow.getUrl();
-                String json = null;
+    public ServerInfo(String URL) {
+        String json = null;
         try {
             json = getJSON(URL + "/soapbox-race-core/Engine.svc/GetServerInformation");
         } catch (IOException e) {
-        } 
+        }
 
         Gson gson = new Gson();
 
