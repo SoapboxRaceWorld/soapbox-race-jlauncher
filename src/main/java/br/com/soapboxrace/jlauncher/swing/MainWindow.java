@@ -174,7 +174,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        loginRegisterTabbedPanel.addTab("Launcher", loginTab);
+        loginRegisterTabbedPanel.addTab(Text.getString("Login"), loginTab);
 
         createButton.setText(Text.getString("CreateAccount"));
         createButton.addActionListener(new java.awt.event.ActionListener() {
@@ -217,7 +217,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        loginRegisterTabbedPanel.addTab("Create Account", registerTab);
+        loginRegisterTabbedPanel.addTab(Text.getString("Register"), registerTab);
 
         ChangeLauncherLanguageLabel.setText(Text.getString("ChangeLanguage"));
 
@@ -284,7 +284,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
-        loginRegisterTabbedPanel.addTab("tab3", optionsTab);
+        loginRegisterTabbedPanel.addTab(Text.getString("Options"), optionsTab);
 
         serverAddressText.setText(Text.getString("ServerAddress"));
 
