@@ -42,7 +42,7 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="mainTabbedPane" alignment="1" max="32767" attributes="0"/>
+              <Component id="mainTabbedPane" alignment="1" pref="784" max="32767" attributes="0"/>
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -136,7 +136,7 @@
                               <Component id="loginPasswordText" alignment="1" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <Component id="loginSaveCredentialsCheckBox" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="300" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="395" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -229,7 +229,7 @@
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="createEmailText" alignment="1" pref="469" max="32767" attributes="0"/>
+                                      <Component id="createEmailText" alignment="1" pref="564" max="32767" attributes="0"/>
                                       <Component id="createTicketText" alignment="0" max="32767" attributes="0"/>
                                       <Component id="createPasswd2Text" alignment="1" max="32767" attributes="0"/>
                                       <Component id="createPasswd1Text" alignment="0" max="32767" attributes="0"/>
