@@ -6,6 +6,7 @@ public class ConfigVO {
     private String serverURL;
     private String email;
     private String passwordSHA1;
+    private int locale;
     private boolean saveCredentials = false;
 
     public String getGameExePath() {
@@ -46,6 +47,14 @@ public class ConfigVO {
 
     public void setSaveCredentials(boolean saveCredentials) {
         this.saveCredentials = saveCredentials;
+    }
+    
+        public int getLocale() {
+        return locale;
+    }
+
+    public void setLocale(int locale) {
+        this.locale = locale;
     }
 
 }
