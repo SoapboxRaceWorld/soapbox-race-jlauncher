@@ -56,6 +56,8 @@ public class Main {
             Locale.setDefault(new Locale("sl","SI"));
         } else if(p == 17){
             Locale.setDefault(new Locale("tr","TR"));
+        } else if(p == 100000) {
+            Locale.setDefault(Locale.getDefault());
         }
         }catch(NullPointerException e){
         
@@ -131,6 +133,11 @@ public class Main {
         String pathTo = folder.toString();
         CopyFiles.copyAllFiles(pathTo);
         return Md5Files.checkModules(pathTo);
+    }
+        public static void saveLocale(int locale) {
+        ConfigVO configVO = loadConfig();
+        configVO.setLocale(locale);
+        configDao.saveConfig(configVO);
     }
 
 }

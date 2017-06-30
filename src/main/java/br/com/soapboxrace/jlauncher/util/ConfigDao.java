@@ -26,6 +26,9 @@ public class ConfigDao {
             Boolean saveCredentials = Boolean.valueOf(prop.getProperty("saveCredentials"));
             configVO.setServerURL(prop.getProperty("serverURL"));
             configVO.setSaveCredentials(saveCredentials);
+            String Slocale = prop.getProperty("locale");
+            int locale = Integer.parseInt(Slocale);
+            configVO.setLocale(locale);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -42,6 +45,8 @@ public class ConfigDao {
             String saveCredentials = String.valueOf(configVO.isSaveCredentials());
             prop.setProperty("saveCredentials", saveCredentials);
             prop.setProperty("serverURL", configVO.getServerURL());
+            String locale = String.valueOf(configVO.getLocale());
+            prop.setProperty(("locale"), locale);
             prop.store(new FileOutputStream("config.properties"), null);
         } catch (IOException e) {
             e.printStackTrace();
