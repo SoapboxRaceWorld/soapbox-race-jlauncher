@@ -347,7 +347,7 @@
                 <Component class="javax.swing.JComboBox" name="ChooseLauncherLanguage">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { Text.getString(&quot;ChooseLanguage&quot;), &quot;English&quot;, &quot;French&quot;, &quot;Porteguese&quot; })" type="code"/>
+                      <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { Text.getString(&quot;ChooseLanguage&quot;), &quot;&#x627;&#x644;&#x644;&#x63a;&#x629; &#x627;&#x644;&#x639;&#x631;&#x628;&#x64a;&#x629; &#x627;&#x644;&#x641;&#x635;&#x62d;&#x649;&quot;,&quot;&#x9ac;&#x9be;&#x982;&#x9b2;&#x9be;&quot; , &quot;&#x431;&#x44a;&#x43b;&#x433;&#x430;&#x440;&#x441;&#x43a;&#x438;&quot;, &quot;&#x10d;e&#x161;tina&quot;, &quot;Deutsch&quot;,&quot;English&quot; , &quot;espa&#xf1;ol(Espa&#xf1;a)&quot;, &quot;espa&#xf1;ol(lat&#xed;n)&quot;, &quot;Fran&#xe7;ais&quot;,&quot;Bahasa Indonesia&quot; , &quot;italiano&quot;, &quot;&#x65e5;&#x672c;&#x8a9e;&quot;, &quot;portugu&#xea;s(Brasil)&quot;,&quot;portugu&#xea;s(Portugal)&quot;,&quot;rom&#xe2;n&quot;, &quot;sloven&#x161;&#x10d;ina&quot;, &quot;T&#xfc;rk&#xe7;e&quot; })" type="code"/>
                     </Property>
                   </Properties>
                   <AuxValues>

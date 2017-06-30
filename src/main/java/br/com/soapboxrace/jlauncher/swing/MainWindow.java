@@ -226,7 +226,7 @@ public class MainWindow extends javax.swing.JFrame {
 
         ChangeLauncherLanguageLabel.setText(Text.getString("ChangeLanguage"));
 
-        ChooseLauncherLanguage.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { Text.getString("ChooseLanguage"), "English", "French", "Porteguese" }));
+        ChooseLauncherLanguage.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { Text.getString("ChooseLanguage"), "اللغة العربية الفصحى","বাংলা" , "български", "čeština", "Deutsch","English" , "español(España)", "español(latín)", "Français","Bahasa Indonesia" , "italiano", "日本語", "português(Brasil)","português(Portugal)","român", "slovenščina", "Türkçe" }));
 
         ConfirmLanguageChange.setText(Text.getString("OK"));
         ConfirmLanguageChange.setToolTipText("");
@@ -481,12 +481,13 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_SendEmailActionPerformed
 
     private void ConfirmLanguageChangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmLanguageChangeActionPerformed
-int p = ChooseLauncherLanguage.getSelectedIndex();
+        int p = ChooseLauncherLanguage.getSelectedIndex();
         if(ChooseLauncherLanguage.getSelectedIndex() == 0){
         setErrorMessage(Text.getString("SelectALanguage"));
         return;
         }
         configVO.setLocale(p);
+		Main.saveLocale(p);
         if (p == 1){
             Locale.setDefault(new Locale("ar"));
         } else if(p == 2){
@@ -521,8 +522,7 @@ int p = ChooseLauncherLanguage.getSelectedIndex();
             Locale.setDefault(new Locale("sl","SI"));
         } else if(p == 17){
             Locale.setDefault(new Locale("tr","TR"));
-        }
-        Main.saveLocale(p);
+        } 
         new MainWindow().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_ConfirmLanguageChangeActionPerformed
