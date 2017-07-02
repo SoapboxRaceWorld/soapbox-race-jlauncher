@@ -112,33 +112,33 @@ public class ServerInfo extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Server Information");
 
-        serverNameLabel.setText("<html><b>" + Text.getString("ServerName") + "</b></html>");
+        serverNameLabel.setText("<html><b>" + Text.getString("info.server.name") + "</b></html>");
 
         serverName.setText("W.I.P");
 
-        serverDescriptionLabel.setText("<html><b>" + Text.getString("ServerDescription") + "</b></html>");
+        serverDescriptionLabel.setText("<html><b>" + Text.getString("info.server.description") + "</b></html>");
 
         serverDescription.setText("W.I.P");
 
-        serverLocationLabel.setText("<html><b>" + Text.getString("originCountry") + "</b></html>");
+        serverLocationLabel.setText("<html><b>" + Text.getString("info.server.location") + "</b></html>");
 
         serverLocation.setText("W.I.P");
 
-        usersOnlineLabel.setText("<html><b>" + Text.getString("onlineUsers") + "</b></html>");
+        usersOnlineLabel.setText("<html><b>" + Text.getString("info.online.users") + "</b></html>");
 
         usersOnline.setText("W.I.P");
 
-        usersRegisteredLabel.setText("<html><b>" + Text.getString("registeredUsers") + "</b></html>");
+        usersRegisteredLabel.setText("<html><b>" + Text.getString("info.registered.users") + "</b></html>");
 
         usersRegistered.setText("W.I.P");
 
-        ownerListLabel.setText("<html><b>" + Text.getString("ownerName") + "</b></html>");
+        ownerListLabel.setText("<html><b>" + Text.getString("info.owner.names") + "</b></html>");
 
         ownerList.setText("W.I.P");
 
         adminList.setText("W.I.P");
 
-        adminListLabel.setText("<html><b>" + Text.getString("adminList") + "</b></html>");
+        adminListLabel.setText("<html><b>" + Text.getString("info.admin.list") + "</b></html>");
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);

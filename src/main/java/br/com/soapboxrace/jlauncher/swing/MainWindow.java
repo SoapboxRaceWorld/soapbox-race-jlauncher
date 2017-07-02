@@ -56,21 +56,24 @@ public class MainWindow extends javax.swing.JFrame {
         String passwordSHA1 = configVO.getPasswordSHA1();
         loginSaveCredentialsCheckBox.setSelected(configVO.isSaveCredentials());
         if (configVO.getEmail().equals("")) {
-            PromptSupport.setPrompt(Text.getString("Email"), loginEmailText);
+            PromptSupport.setPrompt(Text.getString("launcher.email"), loginEmailText);
         } else {
             loginEmailText.setText(configVO.getEmail());
         }
         if (passwordSHA1.equals("")) {
-            PromptSupport.setPrompt(Text.getString("Password"), loginPasswordText);
+            PromptSupport.setPrompt(Text.getString("launcher.password"), loginPasswordText);
         } else {
             loginPasswordText.setText("********************");
         }
         loginSaveCredentialsCheckBox.setSelected(configVO.isSaveCredentials());
-        PromptSupport.setPrompt(Text.getString("EnterEmail"), createEmailText);
-        PromptSupport.setPrompt(Text.getString("EnterPassword"), createPasswd1Text);
-        PromptSupport.setPrompt(Text.getString("ConfirmPassword"), createPasswd2Text);
-        PromptSupport.setPrompt(Text.getString("InviteTicket"), createTicketText);
-        PromptSupport.setPrompt(Text.getString("EnterEmail"), EmailForPassword);
+        PromptSupport.setPrompt(Text.getString("create.email"), createEmailText);
+        PromptSupport.setPrompt(Text.getString("create.password"), createPasswd1Text);
+        PromptSupport.setPrompt(Text.getString("create.confirm.password"), createPasswd2Text);
+        PromptSupport.setPrompt(Text.getString("create.invite.ticket"), createTicketText);
+        PromptSupport.setPrompt(Text.getString("create.email"), EmailForPassword);
+        loginRegisterTabbedPanel.addTab(Text.getString("launcher.login"), loginTab);
+        loginRegisterTabbedPanel.addTab(Text.getString("register.tab"), registerTab);
+        loginRegisterTabbedPanel.addTab(Text.getString("options.tab"), optionsTab);
     }
 
     /**
@@ -103,7 +106,6 @@ public class MainWindow extends javax.swing.JFrame {
         ForgotYourPassword = new javax.swing.JLabel();
         EmailForPassword = new javax.swing.JTextField();
         SendEmail = new javax.swing.JButton();
-        serverAddressText = new javax.swing.JLabel();
         pathLabel = new javax.swing.JLabel();
         changeGamePathButton = new javax.swing.JButton();
         launchButton = new javax.swing.JButton();
@@ -127,7 +129,7 @@ public class MainWindow extends javax.swing.JFrame {
 
         loginPasswordText.setEnabled(false);
 
-        loginButton.setText(Text.getString("Login"));
+        loginButton.setText(Text.getString("launcher.login"));
         loginButton.setEnabled(false);
         loginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -136,9 +138,9 @@ public class MainWindow extends javax.swing.JFrame {
         });
 
         loginSaveCredentialsCheckBox.setEnabled(false);
-        loginSaveCredentialsCheckBox.setLabel(Text.getString("SaveCredentials"));
+        loginSaveCredentialsCheckBox.setLabel(Text.getString("launcher.save.credentials"));
 
-        ForgotYourPasswordRedirect.setText(Text.getString("ForgotYourPassword"));
+        ForgotYourPasswordRedirect.setText(Text.getString("launcher.login.forgot.password"));
         ForgotYourPasswordRedirect.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ForgotYourPasswordRedirectMouseClicked(evt);
@@ -179,9 +181,9 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        loginRegisterTabbedPanel.addTab(Text.getString("Login"), loginTab);
+        loginRegisterTabbedPanel.addTab("Text.getString(\"launcher.login\")", loginTab);
 
-        createButton.setText(Text.getString("CreateAccount"));
+        createButton.setText(Text.getString("create.create.account.btn"));
         createButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 createButtonActionPerformed(evt);
@@ -222,13 +224,13 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        loginRegisterTabbedPanel.addTab(Text.getString("Register"), registerTab);
+        loginRegisterTabbedPanel.addTab("Create Account", registerTab);
 
-        ChangeLauncherLanguageLabel.setText(Text.getString("ChangeLanguage"));
+        ChangeLauncherLanguageLabel.setText(Text.getString("options.change.language"));
 
-        ChooseLauncherLanguage.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { Text.getString("ChooseLanguage"), "اللغة العربية الفصحى","বাংলা" , "български", "čeština", "Deutsch","English" , "español(España)", "español(latín)", "Français","Bahasa Indonesia" , "italiano", "日本語", "português(Brasil)","português(Portugal)","român", "slovenščina", "Türkçe" }));
+        ChooseLauncherLanguage.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { Text.getString("options.choose.language"), "اللغة العربية الفصحى","বাংলা" , "български", "čeština", "Deutsch","English" , "español(España)", "español(latín)", "Français","Bahasa Indonesia" , "italiano", "日本語", "português(Brasil)","português(Portugal)","român", "slovenščina", "Türkçe" }));
 
-        ConfirmLanguageChange.setText(Text.getString("OK"));
+        ConfirmLanguageChange.setText(Text.getString("options.okay.btn"));
         ConfirmLanguageChange.setToolTipText("");
         ConfirmLanguageChange.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -236,7 +238,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
-        ForgotYourPassword.setText(Text.getString("ForgotYourPassword"));
+        ForgotYourPassword.setText(Text.getString("launcher.login.forgot.password"));
 
         EmailForPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -244,7 +246,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
-        SendEmail.setText(Text.getString("SendEmail"));
+        SendEmail.setText(Text.getString("options.send.email.btn"));
         SendEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SendEmailActionPerformed(evt);
@@ -289,13 +291,11 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
-        loginRegisterTabbedPanel.addTab(Text.getString("Options"), optionsTab);
+        loginRegisterTabbedPanel.addTab("tab3", optionsTab);
 
-        serverAddressText.setText(Text.getString("ServerAddress"));
+        pathLabel.setText(Text.getString("main.choose.game.path"));
 
-        pathLabel.setText(Text.getString("ChooseGamePath"));
-
-        changeGamePathButton.setText(Text.getString("ChangeGamePath"));
+        changeGamePathButton.setText(Text.getString("main.change.game.path.btn"));
         changeGamePathButton.setToolTipText("");
         changeGamePathButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -303,7 +303,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
-        launchButton.setText(Text.getString("LaunchGame"));
+        launchButton.setText(Text.getString("main.launch.game"));
         launchButton.setEnabled(false);
         launchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -335,21 +335,21 @@ public class MainWindow extends javax.swing.JFrame {
 
         messageLabel.getAccessibleContext().setAccessibleName("messageLabel");
 
-        serverAddrCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { Text.getString("SelectServer") }));
+        serverAddrCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { Text.getString("main.select.server.jcombobox") }));
         serverAddrCombo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 serverAddrComboActionPerformed(evt);
             }
         });
 
-        srvListButton.setText(Text.getString("GetServerList"));
+        srvListButton.setText(Text.getString("main.get.server.list.btn"));
         srvListButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 srvListButtonActionPerformed(evt);
             }
         });
 
-        serverInfoButton.setText(Text.getString("GetServerInfo"));
+        serverInfoButton.setText(Text.getString("main.get.server.info.btn"));
         serverInfoButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 serverInfoButtonActionPerformed(evt);
@@ -373,12 +373,11 @@ public class MainWindow extends javax.swing.JFrame {
                             .addGroup(mainPanelLayout.createSequentialGroup()
                                 .addComponent(changeGamePathButton)
                                 .addGap(18, 18, 18)
-                                .addComponent(pathLabel))
+                                .addComponent(pathLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(mainPanelLayout.createSequentialGroup()
-                                .addComponent(serverAddressText)
-                                .addGap(18, 18, 18)
-                                .addComponent(serverAddrCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(18, 18, 18)
+                                .addComponent(serverAddrCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)))
                         .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(srvListButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(serverInfoButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
@@ -389,9 +388,7 @@ public class MainWindow extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(serverAddressText)
-                        .addComponent(serverAddrCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(serverAddrCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(srvListButton, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -448,7 +445,7 @@ public class MainWindow extends javax.swing.JFrame {
         try {
             url = new URL(URL + "/soapbox-race-core/Engine.svc/RecoveryPassword/forgotPassword");
         } catch (MalformedURLException ex) {
-            setErrorMessage(Text.getString("ServerNoRecovery"));
+            setErrorMessage(Text.getString("error.server.no.recovery"));
             return;
         }
         HttpURLConnection conn = null;
@@ -483,7 +480,7 @@ public class MainWindow extends javax.swing.JFrame {
     private void ConfirmLanguageChangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmLanguageChangeActionPerformed
         int p = ChooseLauncherLanguage.getSelectedIndex();
         if(ChooseLauncherLanguage.getSelectedIndex() == 0){
-        setErrorMessage(Text.getString("SelectALanguage"));
+        setErrorMessage(Text.getString("error.select.langauge"));
         return;
         }
         configVO.setLocale(p);
@@ -544,7 +541,7 @@ public class MainWindow extends javax.swing.JFrame {
                 serverAddrCombo.addItem(string);
             }
         } catch (Exception e) {
-            setErrorMessage(Text.getString("ErrorLoadingServerList"));
+            setErrorMessage(Text.getString("error.loading.server.list"));
         }
     }// GEN-LAST:event_srvListButtonActionPerformed
 
@@ -576,7 +573,7 @@ public class MainWindow extends javax.swing.JFrame {
     private void createButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_createButtonActionPerformed
 
         if (!Main.copyModules(pathLabel.getText())) {
-            setErrorMessage(Text.getString("ErrorModuleToGameFiles"));
+            setErrorMessage(Text.getString("error.module.to.game.files"));
             launchButton.setEnabled(false);
             return;
         }
@@ -593,7 +590,7 @@ public class MainWindow extends javax.swing.JFrame {
                 setErrorMessage(create.getMessage());
             } else {
                 launchButton.setEnabled(true);
-                setMessage(create.getMessage() + Text.getString("LaunchGame"));
+                setMessage(create.getMessage() + Text.getString("main.launch.game"));
             }
             loginOkVO = create.getLoginOkVO();
         } catch (Exception e) {
@@ -603,7 +600,7 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_loginButtonActionPerformed
         if (!Main.copyModules(pathLabel.getText())) {
-            setErrorMessage(Text.getString("ErrorModuleToGameFiles"));
+            setErrorMessage(Text.getString("error.module.to.game.files"));
             launchButton.setEnabled(false);
             return;
         }
@@ -614,7 +611,7 @@ public class MainWindow extends javax.swing.JFrame {
         if (login.doLogin()) {
             loginOkVO = login.getLoginOkVO();
             launchButton.setEnabled(true);
-            setMessage(Text.getString("LoginOkLaunchGame"));
+            setMessage(Text.getString("message.login.ok.launch.game"));
         } else {
             loginOkVO = null;
             String message = login.getMessage();
@@ -686,7 +683,6 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JLabel pathLabel;
     private javax.swing.JPanel registerTab;
     private javax.swing.JComboBox<String> serverAddrCombo;
-    private javax.swing.JLabel serverAddressText;
     private javax.swing.JButton serverInfoButton;
     private javax.swing.JButton srvListButton;
     // End of variables declaration//GEN-END:variables
@@ -719,10 +715,10 @@ public class MainWindow extends javax.swing.JFrame {
     private void checkGameFile(String path) {
         if (Main.checkGameMd5(path)) {
             enableAll();
-            setMessage(Text.getString("SoapBox"));
+            setMessage(Text.getString("message.soapbox"));
         } else {
             disableAll();
-            setErrorMessage(Text.getString("InvalidOrModdedGameFile"));
+            setErrorMessage(Text.getString("error.invalid.or.modded.game.file"));
         }
     }
     

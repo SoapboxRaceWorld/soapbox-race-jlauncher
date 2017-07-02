@@ -10,8 +10,7 @@
     <Property name="title" type="java.lang.String" value="SoapBox World Racing Launcher"/>
   </Properties>
   <SyntheticProperties>
-    <SyntheticProperty name="formSizePolicy" type="int" value="0"/>
-    <SyntheticProperty name="generateSize" type="boolean" value="false"/>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
   </SyntheticProperties>
   <AuxValues>
@@ -59,14 +58,13 @@
                                   <Component id="changeGamePathButton" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="pathLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="serverAddressText" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
                                   <Component id="serverAddrCombo" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="srvListButton" max="32767" attributes="0"/>
                               <Component id="serverInfoButton" max="32767" attributes="0"/>
@@ -82,10 +80,7 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="serverAddressText" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="serverAddrCombo" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="serverAddrCombo" min="-2" max="-2" attributes="0"/>
                       <Component id="srvListButton" pref="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -119,8 +114,8 @@
             <Container class="javax.swing.JPanel" name="loginTab">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName="Launcher">
-                    <Property name="tabTitle" type="java.lang.String" value="Launcher"/>
+                  <JTabbedPaneConstraints tabName="Text.getString(&quot;launcher.login&quot;)">
+                    <Property name="tabTitle" type="java.lang.String" value="Text.getString(&quot;launcher.login&quot;)"/>
                   </JTabbedPaneConstraints>
                 </Constraint>
               </Constraints>
@@ -183,7 +178,7 @@
                 <Component class="javax.swing.JButton" name="loginButton">
                   <Properties>
                     <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="Text.getString(&quot;Login&quot;)" type="code"/>
+                      <Connection code="Text.getString(&quot;launcher.login&quot;)" type="code"/>
                     </Property>
                     <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
@@ -195,14 +190,14 @@
                   <Properties>
                     <Property name="enabled" type="boolean" value="false"/>
                     <Property name="label" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="Text.getString(&quot;SaveCredentials&quot;)" type="code"/>
+                      <Connection code="Text.getString(&quot;launcher.save.credentials&quot;)" type="code"/>
                     </Property>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="ForgotYourPasswordRedirect">
                   <Properties>
                     <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="Text.getString(&quot;ForgotYourPassword&quot;)" type="code"/>
+                      <Connection code="Text.getString(&quot;launcher.login.forgot.password&quot;)" type="code"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -273,7 +268,7 @@
                 <Component class="javax.swing.JButton" name="createButton">
                   <Properties>
                     <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="Text.getString(&quot;CreateAccount&quot;)" type="code"/>
+                      <Connection code="Text.getString(&quot;create.create.account.btn&quot;)" type="code"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -340,14 +335,14 @@
                 <Component class="javax.swing.JLabel" name="ChangeLauncherLanguageLabel">
                   <Properties>
                     <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="Text.getString(&quot;ChangeLanguage&quot;)" type="code"/>
+                      <Connection code="Text.getString(&quot;options.change.language&quot;)" type="code"/>
                     </Property>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JComboBox" name="ChooseLauncherLanguage">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { Text.getString(&quot;ChooseLanguage&quot;), &quot;&#x627;&#x644;&#x644;&#x63a;&#x629; &#x627;&#x644;&#x639;&#x631;&#x628;&#x64a;&#x629; &#x627;&#x644;&#x641;&#x635;&#x62d;&#x649;&quot;,&quot;&#x9ac;&#x9be;&#x982;&#x9b2;&#x9be;&quot; , &quot;&#x431;&#x44a;&#x43b;&#x433;&#x430;&#x440;&#x441;&#x43a;&#x438;&quot;, &quot;&#x10d;e&#x161;tina&quot;, &quot;Deutsch&quot;,&quot;English&quot; , &quot;espa&#xf1;ol(Espa&#xf1;a)&quot;, &quot;espa&#xf1;ol(lat&#xed;n)&quot;, &quot;Fran&#xe7;ais&quot;,&quot;Bahasa Indonesia&quot; , &quot;italiano&quot;, &quot;&#x65e5;&#x672c;&#x8a9e;&quot;, &quot;portugu&#xea;s(Brasil)&quot;,&quot;portugu&#xea;s(Portugal)&quot;,&quot;rom&#xe2;n&quot;, &quot;sloven&#x161;&#x10d;ina&quot;, &quot;T&#xfc;rk&#xe7;e&quot; })" type="code"/>
+                      <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { Text.getString(&quot;options.choose.language&quot;), &quot;&#x627;&#x644;&#x644;&#x63a;&#x629; &#x627;&#x644;&#x639;&#x631;&#x628;&#x64a;&#x629; &#x627;&#x644;&#x641;&#x635;&#x62d;&#x649;&quot;,&quot;&#x9ac;&#x9be;&#x982;&#x9b2;&#x9be;&quot; , &quot;&#x431;&#x44a;&#x43b;&#x433;&#x430;&#x440;&#x441;&#x43a;&#x438;&quot;, &quot;&#x10d;e&#x161;tina&quot;, &quot;Deutsch&quot;,&quot;English&quot; , &quot;espa&#xf1;ol(Espa&#xf1;a)&quot;, &quot;espa&#xf1;ol(lat&#xed;n)&quot;, &quot;Fran&#xe7;ais&quot;,&quot;Bahasa Indonesia&quot; , &quot;italiano&quot;, &quot;&#x65e5;&#x672c;&#x8a9e;&quot;, &quot;portugu&#xea;s(Brasil)&quot;,&quot;portugu&#xea;s(Portugal)&quot;,&quot;rom&#xe2;n&quot;, &quot;sloven&#x161;&#x10d;ina&quot;, &quot;T&#xfc;rk&#xe7;e&quot; })" type="code"/>
                     </Property>
                   </Properties>
                   <AuxValues>
@@ -357,7 +352,7 @@
                 <Component class="javax.swing.JButton" name="ConfirmLanguageChange">
                   <Properties>
                     <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="Text.getString(&quot;OK&quot;)" type="code"/>
+                      <Connection code="Text.getString(&quot;options.okay.btn&quot;)" type="code"/>
                     </Property>
                     <Property name="toolTipText" type="java.lang.String" value=""/>
                   </Properties>
@@ -368,7 +363,7 @@
                 <Component class="javax.swing.JLabel" name="ForgotYourPassword">
                   <Properties>
                     <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="Text.getString(&quot;ForgotYourPassword&quot;)" type="code"/>
+                      <Connection code="Text.getString(&quot;launcher.login.forgot.password&quot;)" type="code"/>
                     </Property>
                   </Properties>
                 </Component>
@@ -380,7 +375,7 @@
                 <Component class="javax.swing.JButton" name="SendEmail">
                   <Properties>
                     <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="Text.getString(&quot;SendEmail&quot;)" type="code"/>
+                      <Connection code="Text.getString(&quot;options.send.email.btn&quot;)" type="code"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -391,24 +386,17 @@
             </Container>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JLabel" name="serverAddressText">
-          <Properties>
-            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="Text.getString(&quot;ServerAddress&quot;)" type="code"/>
-            </Property>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JLabel" name="pathLabel">
           <Properties>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="Text.getString(&quot;ChooseGamePath&quot;)" type="code"/>
+              <Connection code="Text.getString(&quot;main.choose.game.path&quot;)" type="code"/>
             </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="changeGamePathButton">
           <Properties>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="Text.getString(&quot;ChangeGamePath&quot;)" type="code"/>
+              <Connection code="Text.getString(&quot;main.change.game.path.btn&quot;)" type="code"/>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
@@ -419,7 +407,7 @@
         <Component class="javax.swing.JButton" name="launchButton">
           <Properties>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="Text.getString(&quot;LaunchGame&quot;)" type="code"/>
+              <Connection code="Text.getString(&quot;main.launch.game&quot;)" type="code"/>
             </Property>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
@@ -471,7 +459,7 @@
         <Component class="javax.swing.JComboBox" name="serverAddrCombo">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { Text.getString(&quot;SelectServer&quot;) })" type="code"/>
+              <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { Text.getString(&quot;main.select.server.jcombobox&quot;) })" type="code"/>
             </Property>
           </Properties>
           <Events>
@@ -485,7 +473,7 @@
         <Component class="javax.swing.JButton" name="srvListButton">
           <Properties>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="Text.getString(&quot;GetServerList&quot;)" type="code"/>
+              <Connection code="Text.getString(&quot;main.get.server.list.btn&quot;)" type="code"/>
             </Property>
           </Properties>
           <Events>
@@ -495,7 +483,7 @@
         <Component class="javax.swing.JButton" name="serverInfoButton">
           <Properties>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="Text.getString(&quot;GetServerInfo&quot;)" type="code"/>
+              <Connection code="Text.getString(&quot;main.get.server.info.btn&quot;)" type="code"/>
             </Property>
           </Properties>
           <Events>
