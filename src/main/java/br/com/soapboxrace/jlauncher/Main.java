@@ -6,6 +6,7 @@ import java.nio.file.Paths;
 import br.com.soapboxrace.jlauncher.swing.MainWindow;
 import br.com.soapboxrace.jlauncher.util.ConfigDao;
 import br.com.soapboxrace.jlauncher.util.CopyFiles;
+import br.com.soapboxrace.jlauncher.util.EmailValidator;
 import br.com.soapboxrace.jlauncher.util.Md5Files;
 import br.com.soapboxrace.jlauncher.vo.ConfigVO;
 import br.com.soapboxrace.jlauncher.vo.UserVO;
@@ -88,4 +89,8 @@ public class Main {
 		return Md5Files.checkModules(pathTo);
 	}
 
+	public static boolean checkEmail(String email) {
+		EmailValidator emailValidator = new EmailValidator(email);
+		return emailValidator.isValid();
+	}
 }
