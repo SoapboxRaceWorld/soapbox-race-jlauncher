@@ -13,7 +13,7 @@ import br.com.soapboxrace.jlauncher.vo.UserVO;
 
 public class Main {
 
-	private static ConfigDao configDao = new ConfigDao();
+	public static ConfigDao configDao = new ConfigDao();
 
 	public static void main(String[] args) {
 		new MainWindow().setVisible(true);

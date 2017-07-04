@@ -4,10 +4,23 @@ import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
+import br.com.soapboxrace.jlauncher.Main;
+
 public class LocaleLoader {
 
 	public static String getBundleString(String key) {
-		ResourceBundle bundle = ResourceBundle.getBundle("locales.locale", Locale.getDefault());
+		Locale locale = Locale.getDefault();
+		String localeStr = Main.configDao.getConfig().getLocale();
+		if (localeStr != null && !localeStr.isEmpty()) {
+			String[] split = localeStr.split("_");
+			String language = split[0];
+			String country = "";
+			if (split.length == 2) {
+				country = split[1];
+			}
+			locale = new Locale(language, country);
+		}
+		ResourceBundle bundle = ResourceBundle.getBundle("locales.locale", locale);
 		return bundle.getString(key);
 	}
 
