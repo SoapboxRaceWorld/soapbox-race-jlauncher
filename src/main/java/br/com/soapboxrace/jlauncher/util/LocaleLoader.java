@@ -6,7 +6,7 @@ import java.util.ResourceBundle;
 
 public class LocaleLoader {
 
-	private static String getBundleString(String key) {
+	public static String getBundleString(String key) {
 		ResourceBundle bundle = ResourceBundle.getBundle("locales.locale", Locale.getDefault());
 		return bundle.getString(key);
 	}
