@@ -114,8 +114,8 @@
             <Container class="javax.swing.JPanel" name="loginTab">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName="Text.getString(&quot;launcher.login&quot;)">
-                    <Property name="tabTitle" type="java.lang.String" value="Text.getString(&quot;launcher.login&quot;)"/>
+                  <JTabbedPaneConstraints tabName="Login">
+                    <Property name="tabTitle" type="java.lang.String" value="Login"/>
                   </JTabbedPaneConstraints>
                 </Constraint>
               </Constraints>
@@ -209,8 +209,8 @@
             <Container class="javax.swing.JPanel" name="registerTab">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName="Create Account">
-                    <Property name="tabTitle" type="java.lang.String" value="Create Account"/>
+                  <JTabbedPaneConstraints tabName="Register">
+                    <Property name="tabTitle" type="java.lang.String" value="Register"/>
                   </JTabbedPaneConstraints>
                 </Constraint>
               </Constraints>
@@ -280,8 +280,8 @@
             <Container class="javax.swing.JPanel" name="optionsTab">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName="tab3">
-                    <Property name="tabTitle" type="java.lang.String" value="tab3"/>
+                  <JTabbedPaneConstraints tabName="Options">
+                    <Property name="tabTitle" type="java.lang.String" value="Options"/>
                   </JTabbedPaneConstraints>
                 </Constraint>
               </Constraints>
@@ -448,7 +448,7 @@
             <Component class="javax.swing.JLabel" name="messageLabel">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;b&gt;SoapBox Race World Online Launcher Beta v0.0.6&lt;/b&gt;&lt;/html&gt;"/>
+                <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;b&gt;SoapBox Race World Online Launcher Beta v0.0.7&lt;/b&gt;&lt;/html&gt;"/>
               </Properties>
               <AccessibilityProperties>
                 <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="messageLabel"/>

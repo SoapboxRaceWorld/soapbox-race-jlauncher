@@ -24,6 +24,11 @@ import java.net.ProtocolException;
 import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 import org.jdesktop.swingx.prompt.PromptSupport;
 
 /**
@@ -36,7 +41,7 @@ public class MainWindow extends javax.swing.JFrame {
      *
      */
     private static final long serialVersionUID = 5483993078168848130L;
-    
+
     private LoginOkVO loginOkVO;
     private ConfigVO configVO = Main.loadConfig();
     private ServerList serverList = new ServerList();
@@ -181,7 +186,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        loginRegisterTabbedPanel.addTab("Text.getString(\"launcher.login\")", loginTab);
+        loginRegisterTabbedPanel.addTab("Login", loginTab);
 
         createButton.setText(Text.getString("create.create.account.btn"));
         createButton.addActionListener(new java.awt.event.ActionListener() {
@@ -224,7 +229,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        loginRegisterTabbedPanel.addTab("Create Account", registerTab);
+        loginRegisterTabbedPanel.addTab("Register", registerTab);
 
         ChangeLauncherLanguageLabel.setText(Text.getString("options.change.language"));
 
@@ -291,7 +296,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
-        loginRegisterTabbedPanel.addTab("tab3", optionsTab);
+        loginRegisterTabbedPanel.addTab("Options", optionsTab);
 
         pathLabel.setText(Text.getString("main.choose.game.path"));
 
@@ -314,7 +319,7 @@ public class MainWindow extends javax.swing.JFrame {
         messageBase.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         messageLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        messageLabel.setText("<html><b>SoapBox Race World Online Launcher Beta v0.0.6</b></html>");
+        messageLabel.setText("<html><b>SoapBox Race World Online Launcher Beta v0.0.7</b></html>");
 
         javax.swing.GroupLayout messageBaseLayout = new javax.swing.GroupLayout(messageBase);
         messageBase.setLayout(messageBaseLayout);
@@ -441,6 +446,8 @@ public class MainWindow extends javax.swing.JFrame {
     private void SendEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SendEmailActionPerformed
         String URL = getUrl();
         String Email = EmailForPassword.getText();
+        Email = Email.replace("@", "%40");
+        Email = "email=" + Email;
         URL url;
         try {
             url = new URL(URL + "/soapbox-race-core/Engine.svc/RecoveryPassword/forgotPassword");
@@ -448,78 +455,89 @@ public class MainWindow extends javax.swing.JFrame {
             setErrorMessage(Text.getString("error.server.no.recovery"));
             return;
         }
-        HttpURLConnection conn = null;
+            OkHttpClient client = new OkHttpClient();
+
+            MediaType mediaType = MediaType.parse("application/x-www-form-urlencoded");
+            RequestBody body = RequestBody.create(mediaType, Email);
+            Request request = new Request.Builder()
+                    .url(url)
+                    .post(body)
+                    .addHeader("content-type", "application/x-www-form-urlencoded")
+                    .addHeader("cache-control", "no-cache")
+                    .addHeader("postman-token", "afd1c62b-949a-54dd-b359-5f9052d3b553")
+                    .build();
+            Response response = null;
         try {
-            conn = (HttpURLConnection) url.openConnection();
+            response = client.newCall(request).execute();
         } catch (IOException ex) {
-            Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+           setErrorMessage(Text.getString("error.server.no.recovery"));
         }
-        conn.setDoOutput(true);
-        conn.setInstanceFollowRedirects(false);
+        
+        String finalResponse;
         try {
-            conn.setRequestMethod("POST");
-        } catch (ProtocolException ex) {
-            Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+            finalResponse = response.body().string();
+        } catch (IOException | NullPointerException ex) {
+            setErrorMessage(Text.getString("error.server.no.recovery"));
+            return;
         }
-        conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-        conn.setUseCaches(false);
-        DataOutputStream wr = null;
-        try {
-            wr = new DataOutputStream(conn.getOutputStream());
-        } catch (IOException ex) {
-            Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        try {
-            wr.writeBytes(Email);
-        } catch (IOException ex) {
-            Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+        String[] ErrorOrSent = finalResponse.split(":");
+        String emailsent = ErrorOrSent[1].replace("[","");
+        emailsent = emailsent.replace("]", "");
+        if(ErrorOrSent[0].equals("Link to reset password sent to")){
+         setMessage(Text.getString("message.forgot.password.email.sent") + emailsent);
+        }else {
+            if(ErrorOrSent[1].equals(" Invalid email!")){
+                setErrorMessage(Text.getString("error.forgot.password.invalid.email"));
+            } else{
+                setErrorMessage(Text.getString("error.forgot.password.already.sent"));
+            }
         }
 
     }//GEN-LAST:event_SendEmailActionPerformed
 
     private void ConfirmLanguageChangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmLanguageChangeActionPerformed
         int p = ChooseLauncherLanguage.getSelectedIndex();
-        if(ChooseLauncherLanguage.getSelectedIndex() == 0){
-        setErrorMessage(Text.getString("error.select.langauge"));
-        return;
+        if (ChooseLauncherLanguage.getSelectedIndex() == 0) {
+            setErrorMessage(Text.getString("error.select.langauge"));
+            return;
         }
         configVO.setLocale(p);
-		Main.saveLocale(p);
-        if (p == 1){
+        Main.saveLocale(p);
+        if (p == 1) {
             Locale.setDefault(new Locale("ar"));
-        } else if(p == 2){
-            Locale.setDefault(new Locale("bn","IN"));
-        } else if(p == 3){
-            Locale.setDefault(new Locale("bg","BG"));
-        } else if(p == 4){
-            Locale.setDefault(new Locale("cs","CZ"));
-        } else if(p == 5){
+        } else if (p == 2) {
+            Locale.setDefault(new Locale("bn", "IN"));
+        } else if (p == 3) {
+            Locale.setDefault(new Locale("bg", "BG"));
+        } else if (p == 4) {
+            Locale.setDefault(new Locale("cs", "CZ"));
+        } else if (p == 5) {
             Locale.setDefault(new Locale("de"));
-        } else if(p == 6){
+        } else if (p == 6) {
             Locale.setDefault(new Locale("en"));
-        } else if(p == 7){
-            Locale.setDefault(new Locale("es","ES"));
-        } else if(p == 8){
-            Locale.setDefault(new Locale("es","PY"));
-        } else if(p == 9){
+        } else if (p == 7) {
+            Locale.setDefault(new Locale("es", "ES"));
+        } else if (p == 8) {
+            Locale.setDefault(new Locale("es", "PY"));
+        } else if (p == 9) {
             Locale.setDefault(new Locale("fr"));
-        } else if(p == 10){
-            Locale.setDefault(new Locale("in","ID"));
-        } else if(p == 11){
-            Locale.setDefault(new Locale("it","IT"));
-        } else if(p == 12){
-            Locale.setDefault(new Locale("ja","JP"));
-        } else if(p == 13){
-            Locale.setDefault(new Locale("pt","BR"));
-        } else if(p == 14){
-            Locale.setDefault(new Locale("pt","PT"));
-        } else if(p == 15){
-            Locale.setDefault(new Locale("ro","RO"));
-        } else if(p == 16){
-            Locale.setDefault(new Locale("sl","SI"));
-        } else if(p == 17){
-            Locale.setDefault(new Locale("tr","TR"));
-        } 
+        } else if (p == 10) {
+            Locale.setDefault(new Locale("in", "ID"));
+        } else if (p == 11) {
+            Locale.setDefault(new Locale("it", "IT"));
+        } else if (p == 12) {
+            Locale.setDefault(new Locale("ja", "JP"));
+        } else if (p == 13) {
+            Locale.setDefault(new Locale("pt", "BR"));
+        } else if (p == 14) {
+            Locale.setDefault(new Locale("pt", "PT"));
+        } else if (p == 15) {
+            Locale.setDefault(new Locale("ro", "RO"));
+        } else if (p == 16) {
+            Locale.setDefault(new Locale("sl", "SI"));
+        } else if (p == 17) {
+            Locale.setDefault(new Locale("tr", "TR"));
+        }
         new MainWindow().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_ConfirmLanguageChangeActionPerformed
@@ -527,7 +545,7 @@ public class MainWindow extends javax.swing.JFrame {
     private void loginEmailTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginEmailTextActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_loginEmailTextActionPerformed
-    
+
     private void serverAddrComboActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_serverAddrComboActionPerformed
         // TODO add your handling code here:
         serverAddrCombo.getItemAt(0);
@@ -690,11 +708,11 @@ public class MainWindow extends javax.swing.JFrame {
     public void setErrorMessage(String message) {
         messageLabel.setText("<html><font color='red'><b>" + message + "</b></font></html>");
     }
-    
+
     public void setMessage(String message) {
         messageLabel.setText("<html><b>" + message + "</b></html>");
     }
-    
+
     public void enableAll() {
         loginRegisterTabbedPanel.setEnabled(true);
         loginEmailText.setEnabled(true);
@@ -702,7 +720,7 @@ public class MainWindow extends javax.swing.JFrame {
         loginSaveCredentialsCheckBox.setEnabled(true);
         loginButton.setEnabled(true);
     }
-    
+
     public void disableAll() {
         loginRegisterTabbedPanel.setSelectedIndex(0);
         loginRegisterTabbedPanel.setEnabled(false);
@@ -711,7 +729,7 @@ public class MainWindow extends javax.swing.JFrame {
         loginSaveCredentialsCheckBox.setEnabled(false);
         loginButton.setEnabled(false);
     }
-    
+
     private void checkGameFile(String path) {
         if (Main.checkGameMd5(path)) {
             enableAll();
@@ -721,12 +739,12 @@ public class MainWindow extends javax.swing.JFrame {
             setErrorMessage(Text.getString("error.invalid.or.modded.game.file"));
         }
     }
-    
+
     public String getUrl() {
         String selectedItem = (String) serverAddrCombo.getSelectedItem();
         String[] split = selectedItem.split(";");
         System.out.println(split[1]);
         return split[1];
     }
-    
+
 }
