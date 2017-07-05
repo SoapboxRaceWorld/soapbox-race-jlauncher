@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Locale;
 import java.util.Properties;
 
 import br.com.soapboxrace.jlauncher.vo.ConfigVO;
@@ -28,7 +29,7 @@ public class ConfigDao {
 			configVO.setSaveCredentials(saveCredentials);
 			String locale = prop.getProperty("locale");
 			if (locale == null) {
-				locale = "";
+				locale = Locale.getDefault().toString();
 			}
 			configVO.setLocale(locale);
 		} catch (IOException e) {

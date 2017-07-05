@@ -5,18 +5,22 @@
  */
 package br.com.soapboxrace.jlauncher.swing;
 
-import java.awt.Component;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 
 import br.com.soapboxrace.jlauncher.LoginCreate;
 import br.com.soapboxrace.jlauncher.Main;
+import br.com.soapboxrace.jlauncher.util.LocaleList;
 import br.com.soapboxrace.jlauncher.util.LocaleLoader;
 import br.com.soapboxrace.jlauncher.util.ServerList;
 import br.com.soapboxrace.jlauncher.vo.ConfigVO;
+import br.com.soapboxrace.jlauncher.vo.LocaleVO;
 import br.com.soapboxrace.jlauncher.vo.LoginOkVO;
 
 /**
@@ -51,6 +55,26 @@ public class MainWindow extends javax.swing.JFrame {
 		if (!passwordSHA1.isEmpty()) {
 			loginPasswordText.setText("********************");
 		}
+		launcherLanguageCombo.removeAllItems();
+		LocaleList localeList = new LocaleList();
+		ArrayList<LocaleVO> localeList2 = localeList.getLocaleList();
+		for (LocaleVO localeVO : localeList2) {
+			launcherLanguageCombo.addItem(localeVO);
+			if (configVO.getLocale().equals(localeVO.getLocale())) {
+				launcherLanguageCombo.setSelectedItem(localeVO);
+			}
+		}
+		launcherLanguageCombo.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				if (e.getStateChange() == 1) {
+					LocaleVO item = (LocaleVO) e.getItem();
+					configVO.setLocale(item.getLocale());
+					Main.configDao.saveConfig(configVO);
+					JOptionPane.showMessageDialog(null, "Language changed, closing!");
+					System.exit(0);
+				}
+			}
+		});
 		loginSaveCredentialsCheckBox.setSelected(configVO.isSaveCredentials());
 	}
 
@@ -62,6 +86,7 @@ public class MainWindow extends javax.swing.JFrame {
 	private void initComponents() {
 
 		fileChooser = new javax.swing.JFileChooser();
+		jLabel1 = new javax.swing.JLabel();
 		jPanel1 = new javax.swing.JPanel();
 		mainTabbedPane = new javax.swing.JTabbedPane();
 		launcherPanel = new javax.swing.JPanel();
@@ -71,6 +96,8 @@ public class MainWindow extends javax.swing.JFrame {
 		loginPasswordText = new javax.swing.JPasswordField();
 		loginButton = new javax.swing.JButton();
 		loginSaveCredentialsCheckBox = new javax.swing.JCheckBox();
+		launcherLanguageCombo = new javax.swing.JComboBox<>();
+		loginLanguageLbl = new javax.swing.JLabel();
 		createPanel = new javax.swing.JPanel();
 		createInviteTicketLbl = new javax.swing.JLabel();
 		createPasswordLbl = new javax.swing.JLabel();
@@ -89,6 +116,8 @@ public class MainWindow extends javax.swing.JFrame {
 		messageLabel = new javax.swing.JLabel();
 		serverAddrCombo = new javax.swing.JComboBox<>();
 		srvListButton = new javax.swing.JButton();
+
+		jLabel1.setText("jLabel1");
 
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -115,16 +144,30 @@ public class MainWindow extends javax.swing.JFrame {
 		loginSaveCredentialsCheckBox.setText("launcher.save.credentials");
 		loginSaveCredentialsCheckBox.setEnabled(false);
 
+		launcherLanguageCombo.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				launcherLanguageComboActionPerformed(evt);
+			}
+		});
+
+		loginLanguageLbl.setText("launcher.language");
+
 		javax.swing.GroupLayout launcherPanelLayout = new javax.swing.GroupLayout(launcherPanel);
 		launcherPanel.setLayout(launcherPanelLayout);
 		launcherPanelLayout.setHorizontalGroup(launcherPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(launcherPanelLayout
 				.createSequentialGroup().addContainerGap()
-				.addGroup(launcherPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING).addComponent(launcherPasswordLbl).addComponent(launcherEmailLbl))
+				.addGroup(launcherPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING).addComponent(launcherPasswordLbl).addComponent(launcherEmailLbl)
+						.addComponent(loginLanguageLbl))
 				.addGap(18, 18, 18)
 				.addGroup(launcherPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 						.addGroup(javax.swing.GroupLayout.Alignment.TRAILING, launcherPanelLayout.createSequentialGroup().addGap(0, 0, Short.MAX_VALUE).addComponent(loginButton))
 						.addComponent(loginEmailText, javax.swing.GroupLayout.Alignment.TRAILING).addComponent(loginPasswordText, javax.swing.GroupLayout.Alignment.TRAILING)
-						.addGroup(launcherPanelLayout.createSequentialGroup().addComponent(loginSaveCredentialsCheckBox).addGap(0, 395, Short.MAX_VALUE)))
+						.addGroup(launcherPanelLayout.createSequentialGroup()
+								.addGroup(launcherPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+										.addComponent(launcherLanguageCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE,
+												javax.swing.GroupLayout.PREFERRED_SIZE)
+										.addComponent(loginSaveCredentialsCheckBox))
+								.addGap(0, 395, Short.MAX_VALUE)))
 				.addContainerGap()));
 		launcherPanelLayout.setVerticalGroup(launcherPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(launcherPanelLayout.createSequentialGroup()
 				.addContainerGap()
@@ -133,8 +176,13 @@ public class MainWindow extends javax.swing.JFrame {
 				.addGap(18, 18, 18)
 				.addGroup(launcherPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE).addComponent(launcherPasswordLbl).addComponent(loginPasswordText,
 						javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-				.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED).addComponent(loginSaveCredentialsCheckBox)
-				.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE).addComponent(loginButton).addContainerGap()));
+				.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED).addComponent(loginSaveCredentialsCheckBox).addGap(18, 18, 18)
+				.addGroup(
+						launcherPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+								.addComponent(launcherLanguageCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE,
+										javax.swing.GroupLayout.PREFERRED_SIZE)
+								.addComponent(loginLanguageLbl))
+				.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE).addComponent(loginButton).addContainerGap()));
 
 		mainTabbedPane.addTab("launcher.tab", launcherPanel);
 
@@ -243,7 +291,7 @@ public class MainWindow extends javax.swing.JFrame {
 		javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
 		jPanel1.setLayout(jPanel1Layout);
 		jPanel1Layout.setHorizontalGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addComponent(mainTabbedPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 784, Short.MAX_VALUE)
+				.addComponent(mainTabbedPane, javax.swing.GroupLayout.Alignment.TRAILING)
 				.addGroup(jPanel1Layout.createSequentialGroup().addContainerGap().addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(
 						javax.swing.GroupLayout.Alignment.TRAILING,
 						jPanel1Layout.createSequentialGroup().addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -278,6 +326,10 @@ public class MainWindow extends javax.swing.JFrame {
 
 		pack();
 	}// </editor-fold>//GEN-END:initComponents
+
+	private void launcherLanguageComboActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_launcherLanguageComboActionPerformed
+		// TODO add your handling code here:
+	}// GEN-LAST:event_launcherLanguageComboActionPerformed
 
 	private void serverAddrComboActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_serverAddrComboActionPerformed
 		// TODO add your handling code here:
@@ -427,14 +479,17 @@ public class MainWindow extends javax.swing.JFrame {
 	private javax.swing.JLabel createPasswordLbl;
 	private javax.swing.JTextField createTicketText;
 	private javax.swing.JFileChooser fileChooser;
+	private javax.swing.JLabel jLabel1;
 	private javax.swing.JPanel jPanel1;
 	private javax.swing.JPanel jPanel4;
 	private javax.swing.JButton launchButton;
 	private javax.swing.JLabel launcherEmailLbl;
+	private javax.swing.JComboBox<br.com.soapboxrace.jlauncher.vo.LocaleVO> launcherLanguageCombo;
 	private javax.swing.JPanel launcherPanel;
 	private javax.swing.JLabel launcherPasswordLbl;
 	private javax.swing.JButton loginButton;
 	private javax.swing.JTextField loginEmailText;
+	private javax.swing.JLabel loginLanguageLbl;
 	private javax.swing.JPasswordField loginPasswordText;
 	private javax.swing.JCheckBox loginSaveCredentialsCheckBox;
 	private javax.swing.JTabbedPane mainTabbedPane;

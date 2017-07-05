@@ -42,6 +42,7 @@ public class LocaleList {
 				String name = file.getName();
 				if (!file.isDirectory() && !name.equals("locale.properties")) {
 					String localeName = name.replaceAll(".properties", "");
+					localeName = localeName.replaceAll("locale_", "");
 					LocaleVO localeVO = new LocaleVO(localeName);
 					localeList.add(localeVO);
 				}

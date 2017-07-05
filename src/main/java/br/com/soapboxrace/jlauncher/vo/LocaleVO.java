@@ -9,7 +9,7 @@ public class LocaleVO implements Comparable<LocaleVO> {
 
 	public LocaleVO(String locale) {
 		this.locale = locale;
-		bundleString = LocaleLoader.getBundleString(locale);
+		bundleString = LocaleLoader.getBundleString("locale_" + locale);
 	}
 
 	@Override
