@@ -29,19 +29,27 @@ public class LocaleList {
 	private ArrayList<LocaleVO> getLocales() throws Exception {
 		URI uri = LocaleList.class.getResource("/locales").toURI();
 		Path myPath = null;
+		boolean inJar = false;
 		if (uri.getScheme().equals("jar")) {
 			FileSystem fileSystem = FileSystems.newFileSystem(uri, Collections.<String, Object>emptyMap());
 			myPath = fileSystem.getPath("/locales");
+			inJar = true;
 		} else {
 			myPath = Paths.get(uri);
 		}
 		ArrayList<LocaleVO> localeList = new ArrayList<>();
 		try (Stream<Path> walk = Files.walk(myPath, 1)) {
 			for (Iterator<Path> it = walk.iterator(); it.hasNext();) {
-				File file = it.next().toFile();
-				String name = file.getName();
-				if (!file.isDirectory() && !name.equals("locale.properties")) {
+				Path next = it.next();
+				String name = next.toString();
+				if (!inJar) {
+					File file = next.toFile();
+					name = "/" + file.getName();
+				}
+				if (!name.equals("/locales") && !name.contains("/locale.properties")) {
 					String localeName = name.replaceAll(".properties", "");
+					localeName = localeName.replaceAll("/locales/", "");
+					localeName = localeName.replaceAll("/", "");
 					localeName = localeName.replaceAll("locale_", "");
 					LocaleVO localeVO = new LocaleVO(localeName);
 					localeList.add(localeVO);
